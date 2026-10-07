@@ -34,5 +34,55 @@ init();
 </script></body></html>'''
 packed = base64.b64encode(gzip.compress(json.dumps(catalog, ensure_ascii=False, separators=(",", ":")).encode("utf-8"), compresslevel=9)).decode("ascii")
 page = page.replace("__BUILT_AT__", datetime.now(timezone.utc).isoformat()).replace("__PACKED__", packed).replace("__TOTAL__", f"{len(catalog):,}".replace(",", "."))
+page = page.replace("</style>", """
+.tabs{display:flex;gap:8px;margin:20px 0}.tabs [aria-selected=true]{border-color:var(--lime);color:var(--lime)}[hidden]{display:none!important}.op-controls{grid-template-columns:repeat(4,minmax(120px,1fr))}.op-results{display:grid;gap:12px;margin-top:16px}.op-card{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--panel)}.op-card h3{margin:0 0 8px}.op-card .actions{margin-top:12px}.op-status{margin:12px 0;color:var(--muted)}@media(max-width:750px){.op-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>""")
+page = page.replace('<section class="filters">', '''<nav class="tabs" aria-label="Vistas"><button class="btn" id="explorerTab" aria-selected="true">Explorador</button><button class="btn" id="opportunitiesTab" aria-selected="false">Oportunidades</button></nav>
+<section id="opportunities" hidden aria-label="Buscador de filtros de sniping"><h2>Filtros de sniping</h2><p class="hint">Primero se revisan todas las cartas del filtro. Si alguna no tiene precio o la más barata no supera el mínimo, se descarta el filtro completo.</p><div class="filters op-controls">
+<div class="field"><label for="opMin">Precio mínimo del grupo (monedas)</label><input id="opMin" type="number" min="0" step="1" value="1000"></div>
+<div class="field"><label for="opCount">Mínimo de cartas por banda</label><input id="opCount" type="number" min="3" step="1" value="3"></div>
+<div class="field"><label for="opMode">Tipo de tolerancia</label><select id="opMode"><option value="coins">Monedas fijas</option><option value="percent">Porcentaje</option></select></div>
+<div class="field"><label id="opToleranceLabel" for="opTolerance">Tolerancia (monedas)</label><input id="opTolerance" type="number" min="0" step="1" value="100"></div>
+<div class="field"><label for="opPosition">Posición</label><select id="opPosition"><option value="">Todas</option></select></div><div class="field"><label for="opNation">Nacionalidad</label><select id="opNation"><option value="">Todas</option></select></div><div class="field"><label for="opLeague">Liga</label><select id="opLeague"><option value="">Todas</option></select></div><div class="field"><label for="opClub">Equipo</label><select id="opClub"><option value="">Todos</option></select></div>
+<div class="field"><label for="opSort">Ordenar resultados</label><select id="opSort"><option value="count">Más cartas</option><option value="price">Mayor precio mínimo</option></select></div><div class="actions"><button class="btn primary" id="opSearch">Buscar oportunidades</button></div></div><p class="hint">Bandas de precios similares: son candidatas para revisar. Los precios de referencia no garantizan ventas ni beneficio neto.</p><p id="opStatus" class="op-status" role="status" aria-live="polite">Carga el catálogo y busca oportunidades.</p><div id="opResults" class="op-results"></div></section><section id="explorer"><section class="filters">''', 1)
+page = page.replace('<p class="footer">', '</section><p class="footer">', 1)
+page = page.replace('let players=[],results=[],page=0;', 'let players=[],results=[],page=0,opResults=[],activeBandIds=null;')
+page = page.replace('function filter(){let q=', 'function filter(){activeBandIds=null;let q=')
+page = page.replace('document.querySelectorAll(".filters select,.filters input")', 'document.querySelectorAll("#explorer .filters select,#explorer .filters input")')
+page = page.replace('document.querySelector(".filters")', 'document.querySelector("#explorer .filters")')
+page = page.replace('players=rows;fill("league"', 'players=rows;installOpportunityOptions();fill("league"')
+page = page.replace('localStorage.setItem("eafc-gender-overrides",JSON.stringify(overrides));filter()', 'localStorage.setItem("eafc-gender-overrides",JSON.stringify(overrides));if(activeBandIds){render()}else{filter()}')
+page = page.replace('\ninit();', r'''
+// Pure analysis: threshold validation always uses the complete matching group.
+function findSnipingBands(rows,options){
+ const groups=new Map(),seen=new Set();
+ for(const p of rows){if(seen.has(p.id))continue;seen.add(p.id);
+  if((options.nation&&p.nation!==options.nation)||(options.league&&p.league!==options.league)||(options.club&&p.club!==options.club))continue;
+  const positions=new Set(`${p.position||""};${p.alternate_positions||""}`.split(";").map(s=>s.trim()).filter(Boolean));
+  for(const position of positions){if(options.position&&position!==options.position)continue;const key=JSON.stringify([position,p.nation,p.league]);if(!groups.has(key))groups.set(key,{position,nation:p.nation,league:p.league,club:options.club||"",cards:[]});groups.get(key).cards.push(p)}
+ }
+ const found=[];
+ for(const group of groups.values()){
+  if(group.cards.length<options.minCards||group.cards.some(p=>p.price===null||p.price===""||!Number.isFinite(Number(p.price))||Number(p.price)<=0))continue;
+  const sorted=[...group.cards].sort((a,b)=>Number(a.price)-Number(b.price)||Number(a.id)-Number(b.id)),groupMin=Number(sorted[0].price);
+  if(groupMin<=options.minPrice)continue;
+  for(let start=0;start<sorted.length;){let end=start+1,minimum=Number(sorted[start].price);
+   while(end<sorted.length){const spread=Number(sorted[end].price)-minimum;if(options.mode==="percent"?spread/minimum>options.tolerance/100:spread>options.tolerance)break;end++}
+   const cards=sorted.slice(start,end);if(cards.length>=options.minCards){const prices=cards.map(p=>Number(p.price)),mid=Math.floor(prices.length/2),timestamps=cards.map(p=>Date.parse(p.price_timestamp)).filter(Number.isFinite);found.push({...group,cards,groupCards:sorted,groupTotal:sorted.length,groupMin,min:minimum,max:prices[prices.length-1],median:prices.length%2?prices[mid]:(prices[mid-1]+prices[mid])/2,latest:timestamps.length?Math.max(...timestamps):null})}start=end;
+  }
+ }
+ return found;
+}
+function showView(op){$("opportunities").hidden=!op;$("explorer").hidden=op;$("explorerTab").setAttribute("aria-selected",String(!op));$("opportunitiesTab").setAttribute("aria-selected",String(op))}
+function installOpportunityOptions(){for(const [id,key] of [["opNation","nation"],["opLeague","league"],["opClub","club"]]){const current=$(id).value;fill(id,values(key),"Todos");$(id).value=current}const current=$("opPosition").value;fill("opPosition",[...new Set([...values("position"),...values("alternate_positions")])],"Todas");$("opPosition").value=current;opResults=[];$("opResults").replaceChildren();$("opStatus").textContent="Catálogo listo. Busca oportunidades con los datos actuales."}
+const coins=value=>Number(value).toLocaleString("es-ES");
+function renderOpportunities(){opResults.sort((a,b)=>$("opSort").value==="price"?b.min-a.min||b.cards.length-a.cards.length:b.cards.length-a.cards.length||b.min-a.min);$("opStatus").textContent=opResults.length?`${opResults.length} bandas candidatas. Cada banda conserva la validación del filtro completo.`:"No hay bandas que cumplan todos los criterios.";$("opResults").innerHTML=opResults.map((r,i)=>`<article class="op-card"><h3>${esc(r.position)} · ${esc(r.nation)} · ${esc(r.league)}${r.club?" · "+esc(r.club):""}</h3><div><b>${r.cards.length} cartas en esta banda</b> · ${coins(r.min)}–${coins(r.max)} monedas · Mediana: ${coins(r.median)}</div><div class="muted">Filtro completo: ${r.groupTotal} cartas · Más barata: ${coins(r.groupMin)} monedas</div><div class="hint">Precio más reciente: ${r.latest===null?"Sin fecha disponible":new Date(r.latest).toLocaleString("es-ES")}</div><div class="actions"><button class="btn primary" data-band="${i}">Ver cartas de la banda</button><button class="btn" data-group="${i}">Ver filtro completo</button></div></article>`).join("")}
+$("explorerTab").onclick=()=>showView(false);$("opportunitiesTab").onclick=()=>showView(true);
+const tolerances={coins:100,percent:5};let toleranceMode="coins";
+$("opMode").onchange=()=>{tolerances[toleranceMode]=Number($("opTolerance").value);toleranceMode=$("opMode").value;$("opTolerance").value=tolerances[toleranceMode];$("opTolerance").step=toleranceMode==="coins"?"1":"0.1";$("opToleranceLabel").textContent=toleranceMode==="coins"?"Tolerancia (monedas)":"Tolerancia (%)"};
+$("opSort").onchange=renderOpportunities;
+$("opSearch").onclick=()=>{const minPrice=Number($("opMin").value),minCards=Number($("opCount").value),tolerance=Number($("opTolerance").value);if(!players.length){$("opStatus").textContent="Espera a que cargue el catálogo.";return}if(!$("opMin").value||!$("opCount").value||!$("opTolerance").value||!Number.isFinite(minPrice)||minPrice<0||!Number.isInteger(minCards)||minCards<3||!Number.isFinite(tolerance)||tolerance<0){$("opStatus").textContent="Indica un precio mínimo válido, al menos 3 cartas y una tolerancia de cero o más.";return}$("opSearch").disabled=true;$("opStatus").textContent="Analizando el catálogo…";setTimeout(()=>{try{opResults=findSnipingBands(players,{minPrice,minCards,tolerance,mode:$("opMode").value,position:$("opPosition").value,nation:$("opNation").value,league:$("opLeague").value,club:$("opClub").value});renderOpportunities()}finally{$("opSearch").disabled=false}},0)};
+$("opResults").onclick=e=>{const button=e.target.closest("[data-band],[data-group]");if(!button)return;const whole=button.hasAttribute("data-group"),r=opResults[Number(whole?button.dataset.group:button.dataset.band)];document.querySelectorAll("#explorer .filters select,#explorer .filters input").forEach(x=>x.value="");for(const [id,value] of [["position",r.position],["nation",r.nation],["league",r.league],["club",r.club]])$(id).value=value;results=whole?r.groupCards:r.cards;activeBandIds=new Set(results.map(p=>p.id));page=0;render();showView(false);$("range").textContent+=(whole?" · Filtro completo":" · Banda seleccionada");$("count").scrollIntoView({block:"nearest"})};
+init();''')
 Path(__file__).resolve().parent.parent.joinpath("index.html").write_text(page, encoding="utf-8")
 print(f"HTML: {len(page):,} bytes ({len(packed):,} compressed data chars); {len(catalog):,} jugadores")

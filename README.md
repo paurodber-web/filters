@@ -2,7 +2,9 @@
 
 Catálogo con búsqueda, filtros por liga, equipo, nacionalidad, posición, género y rareza, paginación y exportación CSV. `index.html` contiene el catálogo comprimido y también se puede abrir directamente.
 
-GitHub Actions descarga el catálogo completo de FUTNEXT cada hora, en el minuto 17, reconstruye la página y publica el resultado en GitHub Pages. También se ejecuta al subir cambios a `main` y manualmente desde Actions. GitHub puede retrasar las ejecuciones programadas.
+GitHub Actions descarga el catálogo completo de FUTNEXT cada 10 minutos, reconstruye la página y publica el resultado en GitHub Pages. También se ejecuta al subir cambios a `main` y manualmente desde Actions. GitHub puede retrasar las ejecuciones programadas.
+
+La pestaña **Oportunidades** busca filtros por posición (incluidas alternativas), nacionalidad y liga, con equipo opcional. Primero valida todas las cartas del filtro: exige al menos 3, precios positivos y que la más barata supere estrictamente el mínimo indicado. Una carta sin precio o por debajo del umbral descarta el filtro completo. Después forma bandas sin solapamiento con tolerancia ajustable en monedas (100 por defecto) o porcentaje (5 %). Cada resultado muestra las cartas de la banda y el total y mínimo del filtro completo; permite abrir cualquiera de los dos conjuntos en el explorador y exportarlo. Los precios son referencias y no garantizan beneficio.
 
 Una descarga incompleta o fallida detiene la publicación y conserva la versión publicada. El género se infiere de la liga y el equipo; puede corregirse en el navegador.
 
