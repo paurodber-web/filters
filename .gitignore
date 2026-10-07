@@ -1,0 +1,6 @@
+work/
+outputs/catalog*.json
+outputs/catalog.csv
+__pycache__/
+*.pyc
+site/
