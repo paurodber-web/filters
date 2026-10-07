@@ -68,7 +68,7 @@ function findSnipingBands(rows,options){
   if(groupMin<=options.minPrice)continue;
   for(let start=0;start<sorted.length;){let end=start+1,minimum=Number(sorted[start].price);
    while(end<sorted.length){const spread=Number(sorted[end].price)-minimum;if(options.mode==="percent"?spread/minimum>options.tolerance/100:spread>options.tolerance)break;end++}
-   const cards=sorted.slice(start,end);if(cards.length>=options.minCards){const prices=cards.map(p=>Number(p.price)),mid=Math.floor(prices.length/2),timestamps=cards.map(p=>Date.parse(p.price_timestamp)).filter(Number.isFinite);found.push({...group,cards,groupCards:sorted,groupTotal:sorted.length,groupMin,min:minimum,max:prices[prices.length-1],median:prices.length%2?prices[mid]:(prices[mid-1]+prices[mid])/2,latest:timestamps.length?Math.max(...timestamps):null})}start=end;
+   const cards=sorted.slice(start,end);if(cards.length>=options.minCards){const prices=cards.map(p=>Number(p.price)),mid=Math.floor(prices.length/2),timestamps=cards.map(p=>(typeof p.price_timestamp==="number"?p.price_timestamp:Date.parse(p.price_timestamp))).filter(Number.isFinite);found.push({...group,cards,groupCards:sorted,groupTotal:sorted.length,groupMin,min:minimum,max:prices[prices.length-1],median:prices.length%2?prices[mid]:(prices[mid-1]+prices[mid])/2,latest:timestamps.length?Math.max(...timestamps):null})}start=end;
   }
  }
  return found;

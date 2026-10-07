@@ -20,6 +20,8 @@ assert.equal(search([100000,104000,105000],{minPrice:99999,mode:'percent',tolera
 assert.equal(search([100000,104000,105000],{minPrice:99999}).length,0);
 assert.equal(search([1100,1100,1100],{tolerance:0}).length,1);
 assert.equal(search([1100,1150]).length,0);
+const numericDates=rows([1000,1050,1100]);numericDates.forEach(p=>p.price_timestamp=1791363600000);
+assert.equal(context.findSnipingBands(numericDates,{...options,position:'CB'})[0].latest,1791363600000);
 const duplicateRows=rows([1000,1050,1100]);duplicateRows.push(duplicateRows[0]);
 const alternate=context.findSnipingBands(duplicateRows,{...options,position:'RB'});
 assert.equal(alternate.length,1);assert.equal(alternate[0].groupTotal,3);
