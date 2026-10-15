@@ -98,6 +98,22 @@
     .time-bottom{margin-top:clamp(38px,5.4vh,64px)}
     .time-bottom .description{max-width:350px;margin-top:0}
     .time-bottom .actions{margin-top:26px}
+    /* An open editorial close after the five full-screen compositions. */
+    .about{background:var(--ice);color:var(--ink);padding:clamp(86px,11vw,152px) var(--gutter)}
+    .about-inner{max-width:1440px;margin:0 auto}
+    .about-topline{display:flex;align-items:center;gap:18px;padding-top:16px;border-top:1px solid #d8e2ea;margin-bottom:clamp(36px,5vw,68px)}
+    .about-index{font-size:10px;font-weight:650;letter-spacing:.12em;color:#566779}
+    .about-label{display:flex;align-items:center;gap:13px;margin:0;font-size:10px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+    .about-label::before{content:'';width:25px;height:1px;background:var(--blue)}
+    .about-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:clamp(48px,9vw,136px);align-items:center}
+    .about-copy h2{max-width:760px;font-size:clamp(40px,5.2vw,74px);font-weight:600;line-height:1.08;letter-spacing:-.055em;text-wrap:balance}
+    .about-lead{max-width:590px;margin:28px 0 0;font-size:17px;line-height:1.75;color:var(--ink)}
+    .about-detail{max-width:540px;margin:17px 0 0;font-size:14px;line-height:1.85;color:#566779}
+    .about-action{margin-top:30px;background:var(--blue);color:white}
+    .about-action:hover{background:#1b5679}
+    .about-image{position:relative;min-width:0;margin:0;aspect-ratio:4/5;background:#e6eefa;overflow:hidden}
+    .about-image img{display:block;width:100%;height:100%;object-fit:cover}
+    .about-image figcaption{position:absolute;inset:auto 0 0;padding:52px 20px 17px;background:linear-gradient(0deg,rgb(13 29 39 / .68),transparent);color:white;font-size:11px;letter-spacing:.025em}
     /* Review controls are separate from the five website compositions. */
     .review{position:fixed;z-index:40;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;max-width:calc(100% - 32px);padding:7px;border:1px solid rgb(255 255 255 / .22);border-radius:9px;background:rgb(16 33 44 / .95);box-shadow:0 8px 30px rgb(0 0 0 / .1);backdrop-filter:blur(18px)}
     .review-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:0 15px;color:var(--beige)}
@@ -134,6 +150,7 @@
       .threshold-frame{padding-inline:28px}
       .bond-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:36px}
       .bond-heading h2{font-size:clamp(42px,6vw,66px)}
+      .about-grid{grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:40px}
     }
     @media(max-width:700px){
       :root{--gutter:24px}
@@ -164,6 +181,12 @@
       .criteri .eyebrow{margin-bottom:24px}.criteria-support .description{max-width:340px}
       .temps{--position:66% 50%;--overlay:linear-gradient(90deg,rgba(13,29,39,.9),rgba(13,29,39,.69) 80%,rgba(13,29,39,.3))}
       .time-content{padding-left:21px}.temps h2{font-size:clamp(35px,8.4vw,56px)}.time-bottom{margin-top:32px}
+      .about{padding-top:76px;padding-bottom:88px}
+      .about-topline{margin-bottom:34px}
+      .about-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+      .about-copy h2{font-size:clamp(38px,9vw,60px)}
+      .about-lead{font-size:16px;margin-top:22px}
+      .about-image{aspect-ratio:4/3}
       .review{bottom:max(14px,env(safe-area-inset-bottom));padding:5px;gap:2px;max-width:calc(100% - 24px)}
       .variant-links{gap:1px}.variant-links a{min-width:43px;padding:0 9px;font-size:11px}.variant-links a span{font-size:11px;opacity:1}.variant-name{display:none}.replay{margin-left:2px;padding-inline:9px;min-width:40px}
     }
@@ -273,6 +296,24 @@
         </div>
       </div>
       <p class="caption" data-reveal>De la neteja, ens n’ocupem nosaltres.</p>
+    </section>
+
+    <section class="about" id="sobre-nosaltres" aria-labelledby="about-title">
+      <div class="about-inner">
+        <div class="about-topline"><span class="about-index">06</span><p class="about-label">Sobre nosaltres · Vic i Osona</p></div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <h2 id="about-title">Una llar cuidada comença per escoltar-te.</h2>
+            <p class="about-lead">Som un servei de neteja de llars a Vic i Osona. Ens importa entendre què necessita cada casa i cuidar-la amb respecte i atenció als detalls.</p>
+            <p class="about-detail">Ens expliques què és important per a tu i acordem com tenir cura dels espais i materials de casa teva. Una manera de fer propera, pensada per a cada llar.</p>
+            <a class="action about-action" href="#servei" data-service>Parlem de casa teva <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a>
+          </div>
+          <figure class="about-image">
+            <img src="assets/service-deep.webp" alt="" loading="lazy" decoding="async">
+            <figcaption>La cura de cada detall fa la diferència.</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
   </main>
 
