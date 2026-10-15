@@ -121,7 +121,7 @@
     .variant-links a{display:flex;align-items:center;justify-content:center;gap:9px;padding:0 14px;min-width:46px;min-height:44px;border-radius:5px;font-size:11px;color:#f1f6fa;transition:background 200ms,color 200ms}
     .variant-links a span{font-size:9px;opacity:.65}
     .variant-links a:hover{background:rgb(255 255 255 / .1)}
-    .variant-links a[aria-current=true]{background:var(--beige);color:var(--ink)}
+    .variant-links a[aria-selected=true]{background:var(--beige);color:var(--ink)}
     .replay{min-height:44px;min-width:44px;display:grid;place-items:center;border:0;border-left:1px solid rgb(255 255 255 / .2);border-radius:0;background:transparent;color:var(--beige);padding:0 11px;margin-left:3px}
     .replay:hover{color:white}
     .replay svg{width:18px;height:18px}
@@ -206,7 +206,7 @@
   </header>
 
   <main id="main">
-    <section class="hero traca" id="traca" aria-labelledby="title-traca" data-name="Traç">
+    <section class="hero traca" id="traca" role="tabpanel" aria-labelledby="title-traca" tabindex="0" data-name="Traç">
       <img class="photo" src="assets/hero-home.webp" alt="" fetchpriority="high">
       <div class="shade" aria-hidden="true"></div>
       <div class="hero-inner">
@@ -223,7 +223,7 @@
       <p class="caption" data-reveal>Una manera de fer. Cinc Estrelles.</p>
     </section>
 
-    <section class="hero llindar" id="llindar" aria-labelledby="title-llindar" data-name="Llindar">
+    <section class="hero llindar" id="llindar" role="tabpanel" aria-labelledby="title-llindar" tabindex="0" data-name="Llindar" hidden>
       <img class="photo" src="assets/hero-arribar-corregida.png" alt="" loading="lazy" decoding="async">
       <div class="shade" aria-hidden="true"></div>
       <div class="hero-inner">
@@ -241,7 +241,7 @@
       </div>
     </section>
 
-    <section class="hero vincle" id="vincle" aria-labelledby="title-vincle" data-name="Vincle">
+    <section class="hero vincle" id="vincle" role="tabpanel" aria-labelledby="title-vincle" tabindex="0" data-name="Vincle" hidden>
       <img class="photo" src="assets/service-maintenance.webp" alt="" loading="lazy" decoding="async">
       <div class="shade" aria-hidden="true"></div>
       <div class="hero-inner">
@@ -264,7 +264,7 @@
       <p class="caption" data-reveal>La tranquil·litat de deixar-ho en bones mans.</p>
     </section>
 
-    <section class="hero criteri" id="criteri" aria-labelledby="title-criteri" data-name="Criteri">
+    <section class="hero criteri" id="criteri" role="tabpanel" aria-labelledby="title-criteri" tabindex="0" data-name="Criteri" hidden>
       <img class="photo" src="assets/team-process.webp" alt="" loading="lazy" decoding="async">
       <div class="shade" aria-hidden="true"></div>
       <div class="hero-inner">
@@ -281,7 +281,7 @@
       <p class="caption" data-reveal>Neteja de llars · Vic i Osona</p>
     </section>
 
-    <section class="hero temps" id="temps" aria-labelledby="title-temps" data-name="Temps">
+    <section class="hero temps" id="temps" role="tabpanel" aria-labelledby="title-temps" tabindex="0" data-name="Temps" hidden>
       <img class="photo" src="assets/hero-home.webp" alt="" loading="lazy" decoding="async">
       <div class="shade" aria-hidden="true"></div>
       <div class="hero-inner">
@@ -319,12 +319,12 @@
 
   <aside class="review" aria-label="Controls de les cinc propostes">
     <span class="review-label">Propostes</span>
-    <nav class="variant-links" aria-label="Tria una composició">
-      <a href="#traca" aria-label="Proposta 1: Traç" aria-current="true"><span>01</span><b class="variant-name">Traç</b></a>
-      <a href="#llindar" aria-label="Proposta 2: Llindar"><span>02</span><b class="variant-name">Llindar</b></a>
-      <a href="#vincle" aria-label="Proposta 3: Vincle"><span>03</span><b class="variant-name">Vincle</b></a>
-      <a href="#criteri" aria-label="Proposta 4: Criteri"><span>04</span><b class="variant-name">Criteri</b></a>
-      <a href="#temps" aria-label="Proposta 5: Temps"><span>05</span><b class="variant-name">Temps</b></a>
+    <nav class="variant-links" role="tablist" aria-label="Tria una composició">
+      <a href="#traca" id="tab-traca" role="tab" aria-controls="traca" aria-label="Proposta 1: Traç" aria-selected="true" tabindex="0"><span>01</span><b class="variant-name">Traç</b></a>
+      <a href="#llindar" id="tab-llindar" role="tab" aria-controls="llindar" aria-label="Proposta 2: Llindar" aria-selected="false" tabindex="-1"><span>02</span><b class="variant-name">Llindar</b></a>
+      <a href="#vincle" id="tab-vincle" role="tab" aria-controls="vincle" aria-label="Proposta 3: Vincle" aria-selected="false" tabindex="-1"><span>03</span><b class="variant-name">Vincle</b></a>
+      <a href="#criteri" id="tab-criteri" role="tab" aria-controls="criteri" aria-label="Proposta 4: Criteri" aria-selected="false" tabindex="-1"><span>04</span><b class="variant-name">Criteri</b></a>
+      <a href="#temps" id="tab-temps" role="tab" aria-controls="temps" aria-label="Proposta 5: Temps" aria-selected="false" tabindex="-1"><span>05</span><b class="variant-name">Temps</b></a>
     </nav>
     <button class="replay" type="button" title="Torna a veure l’entrada" aria-label="Repeteix l’animació de la proposta actual" hidden>
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 7a6.5 6.5 0 1 1-.1 6M4 2v5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -372,6 +372,18 @@
         timers.set(hero, setTimeout(() => hero.classList.remove('is-entering'), 2000));
       }
 
+      function selectHero(hero, animate = true) {
+        heroes.forEach(panel => { panel.hidden = panel !== hero; });
+        links.forEach(link => {
+          const selected = link.hash === `#${hero.id}`;
+          link.setAttribute('aria-selected', String(selected));
+          link.tabIndex = selected ? 0 : -1;
+        });
+        current = hero;
+        if (animate) reveal(hero, true);
+        scheduleSync();
+      }
+
       function sync() {
         frame = 0;
         header.classList.toggle('is-scrolled', scrollY > 32);
@@ -380,19 +392,42 @@
           const rect = hero.getBoundingClientRect();
           return rect.top <= targetY && rect.bottom > targetY ? hero : best;
         }, current);
-        links.forEach(link => {
-          if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'true');
-          else link.removeAttribute('aria-current');
-        });
         reveal(current);
       }
       function scheduleSync() { if (!frame) frame = requestAnimationFrame(sync); }
       addEventListener('scroll', scheduleSync, {passive:true});
       addEventListener('resize', scheduleSync);
       addEventListener('pageshow', scheduleSync);
-      links.forEach(link => link.addEventListener('click', () => {
-        if (link.hash === `#${current.id}`) reveal(current, true);
-      }));
+      links.forEach((link, index) => {
+        link.addEventListener('click', event => {
+          const hero = heroes.find(panel => `#${panel.id}` === link.hash);
+          if (!hero) return;
+          event.preventDefault();
+          selectHero(hero);
+          if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+          hero.scrollIntoView({behavior:reduced.matches ? 'auto' : 'smooth', block:'start'});
+        });
+        link.addEventListener('keydown', event => {
+          let next = index;
+          if (event.key === 'ArrowRight') next = (index + 1) % links.length;
+          else if (event.key === 'ArrowLeft') next = (index - 1 + links.length) % links.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = links.length - 1;
+          else return;
+          event.preventDefault();
+          links[next].focus();
+          links[next].click();
+        });
+      });
+      addEventListener('hashchange', () => {
+        const hero = heroes.find(panel => `#${panel.id}` === location.hash);
+        if (hero) selectHero(hero, false);
+      });
+      const initialHero = heroes.find(panel => `#${panel.id}` === location.hash);
+      if (initialHero && initialHero !== current) {
+        selectHero(initialHero, false);
+        initialHero.scrollIntoView({block:'start'});
+      }
       replay.hidden = false;
       replay.addEventListener('click', () => reveal(current, true));
       reduced.addEventListener('change', () => {
