@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172c44">
+  <title>Cinc Estrelles · Cinc signatures</title>
+  <link rel="preload" href="assets/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face{font-family:Jakarta;src:url('assets/plus-jakarta-sans-latin.woff2') format('woff2');font-style:normal;font-weight:200 800;font-display:swap}
+    :root{--ink:#172c44;--beige:#eee7da;--ice:#f1f6fa;--lime:#d1edc2;--blue:#286d96;--gutter:clamp(24px,5.6vw,88px);--ease:cubic-bezier(.22,1,.36,1)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:0}
+    body{margin:0;background:var(--ink);color:white;font-family:Jakarta,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{font:inherit}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid #c29148;outline-offset:5px}
+    .skip{position:fixed;top:12px;left:16px;z-index:100;background:white;color:var(--ink);padding:16px;transform:translateY(-160%)}
+    .skip:focus{transform:none}
+    .header{position:fixed;inset:0 0 auto;z-index:30;height:104px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 var(--gutter);transition:height 350ms var(--ease),background 350ms,color 350ms;}
+    .header.is-scrolled{height:72px;background:rgb(241 246 250 / .96);color:var(--ink);box-shadow:0 1px 0 rgb(23 44 68 / .08);backdrop-filter:blur(16px)}
+    .brand{display:inline-flex;align-items:center;gap:13px;min-height:44px}
+    .brand svg{width:39px;height:39px;transition:transform 350ms var(--ease)}
+    .is-scrolled .brand svg{transform:scale(.87)}
+    .brand-name{display:block;font-size:17px;font-weight:650;letter-spacing:-.055em}
+    .brand-note{display:block;margin-top:4px;font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+    .header-note{margin-left:auto;font-size:11px;letter-spacing:.025em}
+    .header-link{display:flex;align-items:center;gap:24px;min-height:44px;font-size:11px;font-weight:650;border-bottom:1px solid rgb(255 255 255 / .4)}
+    .is-scrolled .header-link{border-color:rgb(23 44 68 / .25)}
+    .header-link:hover{color:var(--beige)}
+    .is-scrolled .header-link:hover{color:var(--blue)}
+    .hero{position:relative;isolation:isolate;min-height:100svh;display:flex;overflow:hidden;scroll-margin:0;background:#263c49}
+    .photo,.shade{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+    .photo{object-fit:cover;object-position:var(--position,50% 50%)}
+    .shade{z-index:-1;background:var(--overlay)}
+    .hero-inner{width:100%;max-width:1728px;min-height:100svh;margin:auto;padding:160px var(--gutter) 152px;display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 27px;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;line-height:1.7}
+    .eyebrow::before{content:'';width:28px;height:1px;background:var(--beige);flex-shrink:0}
+    h1,h2{margin:0;font-size:clamp(44px,5.15vw,78px);font-weight:600;line-height:1.08;letter-spacing:-.055em;text-wrap:balance}
+    .title-line{display:block}
+    .accent{color:var(--beige)}
+    .description{max-width:365px;margin:27px 0 0;font-size:14px;font-weight:450;line-height:1.85;color:#f3f1ec;text-wrap:pretty}
+    .action{display:inline-flex;align-items:center;justify-content:space-between;gap:38px;min-height:54px;padding:17px 23px;border:1px solid transparent;border-radius:7px;background:var(--beige);color:var(--ink);font-size:12px;font-weight:700;transition:background 200ms,transform 200ms var(--ease);width:fit-content}
+    .action:hover{background:white;transform:translateY(-2px)}
+    .action svg{height:15px;width:15px;flex-shrink:0;transition:transform 200ms}
+    .action:hover svg{transform:translate(2px,-2px)}
+    .actions{margin-top:34px}
+    .quiet-note{display:flex;gap:9px;align-items:center;margin:19px 0 0;font-size:10px;line-height:1.6;letter-spacing:.025em;color:var(--beige)}
+    .quiet-note::before{content:'';height:4px;width:4px;border-radius:50%;background:var(--lime);flex-shrink:0}
+    .caption{position:absolute;right:var(--gutter);bottom:116px;display:flex;align-items:center;gap:15px;font-size:10px;letter-spacing:.025em;color:var(--beige)}
+    .caption::before{content:'';width:32px;height:1px;background:rgb(238 231 218 / .55)}
+    /* 01 · One shared left edge for the title, description and action. */
+    .traca{--position:67% 52%;--overlay:linear-gradient(90deg,rgba(13,29,39,.85),rgba(13,29,39,.69) 55%,rgba(13,29,39,.12)),linear-gradient(0deg,rgba(13,29,39,.5),transparent 70%)}
+    .traca .hero-inner{padding-top:170px;padding-bottom:148px}
+    .traca h1{font-size:clamp(48px,7.1vw,106px);max-width:1180px}
+    .trace-follow{margin-top:40px;max-width:390px}
+    .trace-follow .description{margin:0;max-width:370px}
+    .trace-follow .actions{margin-top:24px}
+    .traca .caption{bottom:116px}
+    /* 02 · A single reading column inside an open frame. */
+    .llindar{--position:43% 52%;--overlay:linear-gradient(150deg,rgba(13,29,39,.87),rgba(13,29,39,.46) 42%,rgba(13,29,39,.06) 62%),linear-gradient(315deg,rgba(13,29,39,.93),rgba(13,29,39,.74) 30%,transparent 63%)}
+    .llindar .hero-inner{padding-top:151px;padding-bottom:141px}
+    .threshold-frame{position:relative;max-width:1000px;padding:35px 40px;border-top:1px solid rgb(238 231 218 / .5);border-left:1px solid rgb(238 231 218 / .5)}
+    .threshold-frame::after{content:'';position:absolute;left:0;bottom:0;width:15%;height:1px;background:rgb(238 231 218 / .5)}
+    .llindar .eyebrow{margin-bottom:23px}
+    .llindar h2{font-size:clamp(45px,5.6vw,84px)}
+    .threshold-support{margin-top:32px}
+    .threshold-support .description{margin:0;max-width:340px}
+    .threshold-support .actions{margin-top:25px}
+    .threshold-support .quiet-note{margin-bottom:0}
+    /* 03 · Both columns start on the same horizontal line. */
+    .vincle{--position:50% 48%;--overlay:linear-gradient(90deg,rgba(13,29,39,.83),rgba(13,29,39,.45) 36%,rgba(13,29,39,.18) 75%),linear-gradient(0deg,rgba(13,29,39,.94),rgba(13,29,39,.66) 43%,transparent 85%)}
+    .vincle .hero-inner{padding-top:170px;padding-bottom:153px}
+    .bond-grid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);column-gap:clamp(48px,7vw,112px);row-gap:28px;align-items:start;padding-top:34px;border-top:1px solid rgb(238 231 218 / .5)}
+    .bond-heading{grid-column:2;grid-row:1}
+    .bond-heading h2{font-size:clamp(48px,6.3vw,94px)}
+    .bond-support{grid-column:1;grid-row:1}
+    .bond-intro .description{margin:0;max-width:260px;font-size:13px}
+    .bond-action{margin-top:32px}
+    .bond-action .actions{margin:0}
+    .bond-action .action{gap:24px}
+    /* 04 · Exactly two columns: statement, then explanation with action. */
+    .criteri{--position:53% 43%;--overlay:linear-gradient(0deg,rgba(12,29,39,.96),rgba(12,29,39,.8) 34%,rgba(12,29,39,.15) 80%),linear-gradient(180deg,rgba(12,29,39,.46),transparent 32%)}
+    .criteri .hero-inner{justify-content:flex-end;padding-bottom:167px;padding-top:270px}
+    .criteri .eyebrow{margin-bottom:30px}
+    .criteria-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);align-items:start;gap:clamp(40px,7vw,110px);padding-top:34px;border-top:1px solid rgb(238 231 218 / .4)}
+    .criteria-grid h2{font-size:clamp(40px,4.7vw,70px)}
+    .criteria-support .description{margin:0;max-width:340px}
+    .criteria-support .actions{margin-top:27px}
+    /* 05 · An inset vertical rule connects the promise to the invitation. */
+    .temps{--position:69% 58%;--overlay:linear-gradient(90deg,rgba(13,29,39,.88),rgba(13,29,39,.72) 40%,rgba(13,29,39,.06) 85%),linear-gradient(180deg,rgba(13,29,39,.3),transparent 30%)}
+    .temps .hero-inner{justify-content:center}
+    .time-content{padding-left:clamp(22px,3vw,48px);border-left:1px solid rgb(238 231 218 / .5);max-width:850px}
+    .temps h2{font-size:clamp(43px,5.6vw,84px)}
+    .temps .eyebrow::before{display:none}
+    .time-bottom{margin-top:clamp(38px,5.4vh,64px)}
+    .time-bottom .description{max-width:350px;margin-top:0}
+    .time-bottom .actions{margin-top:26px}
+    /* Review controls are separate from the five website compositions. */
+    .review{position:fixed;z-index:40;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;max-width:calc(100% - 32px);padding:7px;border:1px solid rgb(255 255 255 / .22);border-radius:9px;background:rgb(16 33 44 / .95);box-shadow:0 8px 30px rgb(0 0 0 / .1);backdrop-filter:blur(18px)}
+    .review-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:0 15px;color:var(--beige)}
+    .variant-links{display:flex;gap:3px}
+    .variant-links a{display:flex;align-items:center;justify-content:center;gap:9px;padding:0 14px;min-width:46px;min-height:44px;border-radius:5px;font-size:11px;color:#f1f6fa;transition:background 200ms,color 200ms}
+    .variant-links a span{font-size:9px;opacity:.65}
+    .variant-links a:hover{background:rgb(255 255 255 / .1)}
+    .variant-links a[aria-current=true]{background:var(--beige);color:var(--ink)}
+    .replay{min-height:44px;min-width:44px;display:grid;place-items:center;border:0;border-left:1px solid rgb(255 255 255 / .2);border-radius:0;background:transparent;color:var(--beige);padding:0 11px;margin-left:3px}
+    .replay:hover{color:white}
+    .replay svg{width:18px;height:18px}
+    .replay[hidden]{display:none}
+    .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    /* Only animate after a section enters view. Base content stays visible. */
+    .hero.is-entering [data-reveal]{animation:arrive 650ms var(--ease) both;animation-delay:var(--delay,0ms)}
+    @keyframes arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    dialog{position:fixed;width:min(560px,calc(100% - 32px));max-height:calc(100svh - 48px);padding:clamp(26px,5vw,48px);border:0;border-radius:8px;background:var(--ice);color:var(--ink);box-shadow:0 24px 100px rgb(0 0 0 / .2)}
+    dialog::backdrop{background:rgb(13 29 39 / .68);backdrop-filter:blur(6px)}
+    dialog h2{font-size:clamp(28px,4vw,38px);margin:24px 0}
+    dialog p{font-size:14px;line-height:1.8;color:#566779}
+    dialog ul{list-style:none;padding:0;margin:26px 0}
+    dialog li{padding:18px 0;border-top:1px solid #d8e2ea;font-size:13px;line-height:1.7}
+    dialog li strong{display:block;font-weight:650;margin-bottom:4px}
+    .close-dialog{position:absolute;right:14px;top:14px;min-width:44px;min-height:44px;border:0;background:transparent;color:var(--ink);font-size:25px}
+    dialog .action{background:var(--blue);color:white;margin-top:8px}
+    dialog .action:hover{background:#1b5679}
+    body:has(dialog[open]){overflow:hidden}
+    #servei{scroll-margin-top:110px}
+    dialog:target:not([open]){display:block;z-index:60;inset:50% auto auto 50%;transform:translate(-50%,-50%);margin:0}
+    @media(min-width:1800px){.hero-inner{max-width:1728px}.caption{right:max(var(--gutter),calc((100vw - 1552px)/2))}}
+    @media(max-width:1000px){
+      .header-note{display:none}.review-label{display:none}.variant-links a{padding-inline:12px}
+      .criteria-grid{gap:40px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+      .threshold-frame{padding-inline:28px}
+      .bond-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:36px}
+      .bond-heading h2{font-size:clamp(42px,6vw,66px)}
+    }
+    @media(max-width:700px){
+      :root{--gutter:24px}
+      .header{height:86px;gap:16px}.header.is-scrolled{height:66px}.brand svg{width:32px;height:32px}.brand-name{font-size:15px}.brand-note{font-size:7px}.header-link{font-size:10px;gap:12px}
+      .hero-inner{padding-top:138px;padding-bottom:130px;min-height:100svh}
+      h1,h2{font-size:clamp(37px,9.1vw,60px)}
+      .eyebrow{font-size:9px;margin-bottom:23px;letter-spacing:.12em}
+      .description{font-size:13px;max-width:330px;line-height:1.8;margin-top:24px}
+      .actions{margin-top:28px}.action{min-height:54px}.quiet-note{font-size:9px}
+      .caption{display:none}
+      .traca{--overlay:linear-gradient(90deg,rgba(13,29,39,.87),rgba(13,29,39,.66) 80%,rgba(13,29,39,.3))}
+      .traca .hero-inner{padding-top:142px;padding-bottom:138px}
+      .traca h1{font-size:clamp(40px,9.8vw,68px)}
+      .trace-follow{margin-top:32px}
+      .trace-follow .action{gap:18px;padding-inline:18px}
+      .llindar{--overlay:linear-gradient(145deg,rgba(13,29,39,.87),rgba(13,29,39,.49)),linear-gradient(0deg,rgba(13,29,39,.65),transparent 80%)}
+      .llindar .hero-inner{padding-top:135px;padding-bottom:137px}
+      .threshold-frame{padding:27px 0 27px 23px}
+      .threshold-frame::after{width:16px}.llindar h2{font-size:clamp(39px,9.5vw,66px)}
+      .threshold-support{margin-top:28px}
+      .threshold-support .action{gap:16px;padding-inline:17px}
+      .vincle .hero-inner{padding-top:138px;padding-bottom:139px}
+      .bond-grid{grid-template-columns:minmax(0,1fr);gap:32px;padding-top:26px}
+      .bond-heading{grid-column:1;grid-row:1}
+      .bond-heading h2{font-size:clamp(42px,10.1vw,70px)}
+      .bond-support{grid-column:1;grid-row:2}.bond-intro .description{max-width:310px}
+      .criteri .hero-inner{padding-top:155px;padding-bottom:137px}.criteria-grid{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:26px}.criteria-grid h2{font-size:clamp(38px,9vw,60px)}
+      .criteri .eyebrow{margin-bottom:24px}.criteria-support .description{max-width:340px}
+      .temps{--position:66% 50%;--overlay:linear-gradient(90deg,rgba(13,29,39,.9),rgba(13,29,39,.69) 80%,rgba(13,29,39,.3))}
+      .time-content{padding-left:21px}.temps h2{font-size:clamp(35px,8.4vw,56px)}.time-bottom{margin-top:32px}
+      .review{bottom:max(14px,env(safe-area-inset-bottom));padding:5px;gap:2px;max-width:calc(100% - 24px)}
+      .variant-links{gap:1px}.variant-links a{min-width:43px;padding:0 9px;font-size:11px}.variant-links a span{font-size:11px;opacity:1}.variant-name{display:none}.replay{margin-left:2px;padding-inline:9px;min-width:40px}
+    }
+    @media(max-height:620px) and (min-width:701px){.hero-inner{min-height:740px}.traca .hero-inner,.criteri .hero-inner{padding-top:150px}.header{height:80px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.replay{display:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#traca">Ves al contingut</a>
+  <header class="header" id="header">
+    <a class="brand" href="#traca" aria-label="Cinc Estrelles, inici">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 2v36M2 20h36M7.3 7.3l25.4 25.4M7.3 32.7 32.7 7.3" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="20" r="10" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span><span class="brand-name">cinc estrelles</span><span class="brand-note">La cura de casa teva</span></span>
+    </a>
+    <span class="header-note">Neteja de llars a Vic i Osona</span>
+    <a class="header-link" href="#servei" data-service>La nostra manera de fer <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero traca" id="traca" aria-labelledby="title-traca" data-name="Traç">
+      <img class="photo" src="assets/hero-home.webp" alt="" fetchpriority="high">
+      <div class="shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" data-reveal>Neteja de llars · Vic i Osona</p>
+        <h1 id="title-traca"><span class="title-line" data-reveal>Es veu net.</span><span class="title-line accent" data-reveal>Se sent casa.</span></h1>
+        <div class="trace-follow">
+          <div>
+            <p class="description" data-reveal>Hi ha una diferència entre netejar una casa i cuidar una llar. La trobaràs en cada racó, en cada superfície, en cada visita.</p>
+            <div class="actions" data-reveal><a class="action" href="#servei" data-service>Descobreix la diferència <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+            <p class="quiet-note" data-reveal>La cura continua on la mirada s’atura.</p>
+          </div>
+        </div>
+      </div>
+      <p class="caption" data-reveal>Una manera de fer. Cinc Estrelles.</p>
+    </section>
+
+    <section class="hero llindar" id="llindar" aria-labelledby="title-llindar" data-name="Llindar">
+      <img class="photo" src="assets/hero-arribar-corregida.png" alt="" loading="lazy" decoding="async">
+      <div class="shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="threshold-frame">
+          <div class="threshold-heading">
+            <p class="eyebrow" data-reveal>El plaer de tornar</p>
+            <h2 id="title-llindar"><span class="title-line" data-reveal>De portes endins,</span><span class="title-line accent" data-reveal>tot canvia.</span></h2>
+          </div>
+          <div class="threshold-support">
+            <p class="description" data-reveal>El soroll del dia es queda fora. A dins, una llar cuidada amb temps, criteri i atenció. A punt per viure-la.</p>
+            <div class="actions" data-reveal><a class="action" href="#servei" data-service>Entra i coneix-nos <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+            <p class="quiet-note" data-reveal>Neteja de llars · Vic i Osona</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero vincle" id="vincle" aria-labelledby="title-vincle" data-name="Vincle">
+      <img class="photo" src="assets/service-maintenance.webp" alt="" loading="lazy" decoding="async">
+      <div class="shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" data-reveal>La confiança es cuida</p>
+        <div class="bond-grid">
+          <div class="bond-heading">
+            <h2 id="title-vincle"><span class="title-line" data-reveal>La teva llar.</span><span class="title-line accent" data-reveal>La nostra<br>dedicació.</span></h2>
+          </div>
+          <div class="bond-support">
+            <div class="bond-intro">
+              <p class="description" data-reveal>Ens obres la porta a una part de la teva vida. Hi entrem amb respecte, escoltem què importa i cuidem allò que ens confies.</p>
+            </div>
+            <div class="bond-action">
+              <div class="actions" data-reveal><a class="action" href="#servei" data-service>Així cuidem casa teva <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+              <p class="quiet-note" data-reveal>A prop teu. A Vic i Osona.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="caption" data-reveal>La tranquil·litat de deixar-ho en bones mans.</p>
+    </section>
+
+    <section class="hero criteri" id="criteri" aria-labelledby="title-criteri" data-name="Criteri">
+      <img class="photo" src="assets/team-process.webp" alt="" loading="lazy" decoding="async">
+      <div class="shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" data-reveal>Cinc Estrelles · Atenció en cada visita</p>
+        <div class="criteria-grid">
+          <h2 id="title-criteri"><span class="title-line" data-reveal>Una altra manera</span><span class="title-line accent" data-reveal>de cuidar casa teva.</span></h2>
+          <div class="criteria-support">
+            <p class="description" data-reveal>Primer, escoltar-te. Després, cuidar cada superfície amb criteri. Perquè fer-ho bé comença per entendre què necessita la teva llar.</p>
+            <div class="actions" data-reveal><a class="action" href="#servei" data-service>Descobreix què ens mou <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+            <p class="quiet-note" data-reveal>El nostre criteri: tenir-ne cura.</p>
+          </div>
+        </div>
+      </div>
+      <p class="caption" data-reveal>Neteja de llars · Vic i Osona</p>
+    </section>
+
+    <section class="hero temps" id="temps" aria-labelledby="title-temps" data-name="Temps">
+      <img class="photo" src="assets/hero-home.webp" alt="" loading="lazy" decoding="async">
+      <div class="shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="time-content">
+          <p class="eyebrow" data-reveal>Temps per al que importa</p>
+          <h2 id="title-temps"><span class="title-line" data-reveal>Cuidem casa teva.</span><span class="title-line accent" data-reveal>Et tornem temps.</span></h2>
+          <div class="time-bottom">
+            <p class="description" data-reveal>Un matí sense presses. Una tarda per a tu. La tranquil·litat de deixar la neteja en mans de qui cuida els detalls.</p>
+            <div class="actions" data-reveal><a class="action" href="#servei" data-service>Troba el teu servei <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+            <p class="quiet-note" data-reveal>Una llar cuidada. Una setmana més lleugera.</p>
+          </div>
+        </div>
+      </div>
+      <p class="caption" data-reveal>De la neteja, ens n’ocupem nosaltres.</p>
+    </section>
+  </main>
+
+  <aside class="review" aria-label="Controls de les cinc propostes">
+    <span class="review-label">Propostes</span>
+    <nav class="variant-links" aria-label="Tria una composició">
+      <a href="#traca" aria-label="Proposta 1: Traç" aria-current="true"><span>01</span><b class="variant-name">Traç</b></a>
+      <a href="#llindar" aria-label="Proposta 2: Llindar"><span>02</span><b class="variant-name">Llindar</b></a>
+      <a href="#vincle" aria-label="Proposta 3: Vincle"><span>03</span><b class="variant-name">Vincle</b></a>
+      <a href="#criteri" aria-label="Proposta 4: Criteri"><span>04</span><b class="variant-name">Criteri</b></a>
+      <a href="#temps" aria-label="Proposta 5: Temps"><span>05</span><b class="variant-name">Temps</b></a>
+    </nav>
+    <button class="replay" type="button" title="Torna a veure l’entrada" aria-label="Repeteix l’animació de la proposta actual" hidden>
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 7a6.5 6.5 0 1 1-.1 6M4 2v5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </aside>
+
+  <dialog id="servei" aria-labelledby="service-title">
+    <a href="#traca" class="close-dialog" aria-label="Tanca" data-close>×</a>
+    <h2 id="service-title">Cada casa té el seu ritme.</h2>
+    <p>La cura comença per entendre la teva llar. A Cinc Estrelles, els detalls formen part de la manera de treballar.</p>
+    <ul>
+      <li><strong>Una neteja que encaixi amb tu</strong>Manteniment habitual o neteja a fons, segons el que necessiti casa teva.</li>
+      <li><strong>Atenció als materials</strong>Acordem l’ús de l’aspirador, la mopa i l’equip de casa per cuidar les superfícies i evitar la contaminació creuada.</li>
+      <li><strong>A prop de casa</strong>Un servei de neteja de llars a Vic i Osona, amb una manera de fer propera i atenta.</li>
+    </ul>
+    <a class="action" href="#traca" data-close>Torna a la proposta <span aria-hidden="true">↗</span></a>
+  </dialog>
+
+  <script>
+    (() => {
+      const heroes = [...document.querySelectorAll('.hero')];
+      const links = [...document.querySelectorAll('.variant-links a')];
+      const header = document.querySelector('.header');
+      const replay = document.querySelector('.replay');
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+      let current = heroes[0];
+      let frame = 0;
+      let lastTrigger;
+      const visited = new Set();
+      const timers = new WeakMap();
+
+      heroes.forEach(hero => {
+        hero.querySelectorAll('[data-reveal]').forEach((element, index) => {
+          element.style.setProperty('--delay', `${index * 150}ms`);
+        });
+      });
+
+      function reveal(hero, repeat = false) {
+        if (reduced.matches || (!repeat && visited.has(hero))) return;
+        visited.add(hero);
+        clearTimeout(timers.get(hero));
+        hero.classList.remove('is-entering');
+        void hero.offsetWidth;
+        hero.classList.add('is-entering');
+        timers.set(hero, setTimeout(() => hero.classList.remove('is-entering'), 2000));
+      }
+
+      function sync() {
+        frame = 0;
+        header.classList.toggle('is-scrolled', scrollY > 32);
+        const targetY = innerHeight * .5;
+        current = heroes.reduce((best, hero) => {
+          const rect = hero.getBoundingClientRect();
+          return rect.top <= targetY && rect.bottom > targetY ? hero : best;
+        }, current);
+        links.forEach(link => {
+          if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+        reveal(current);
+      }
+      function scheduleSync() { if (!frame) frame = requestAnimationFrame(sync); }
+      addEventListener('scroll', scheduleSync, {passive:true});
+      addEventListener('resize', scheduleSync);
+      addEventListener('pageshow', scheduleSync);
+      links.forEach(link => link.addEventListener('click', () => {
+        if (link.hash === `#${current.id}`) reveal(current, true);
+      }));
+      replay.hidden = false;
+      replay.addEventListener('click', () => reveal(current, true));
+      reduced.addEventListener('change', () => {
+        heroes.forEach(hero => { clearTimeout(timers.get(hero)); hero.classList.remove('is-entering'); });
+      });
+
+      const dialog = document.querySelector('#servei');
+      document.querySelectorAll('[data-service]').forEach(link => {
+        link.addEventListener('click', event => {
+          if (typeof dialog.showModal !== 'function') return;
+          event.preventDefault();
+          lastTrigger = link;
+          dialog.showModal();
+        });
+      });
+      document.querySelectorAll('[data-close]').forEach(link => {
+        link.addEventListener('click', event => {
+          if (!dialog.open) return;
+          event.preventDefault();
+          dialog.close();
+        });
+      });
+      dialog.addEventListener('click', event => {
+        const rect = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+      });
+      dialog.addEventListener('close', () => lastTrigger?.focus({preventScroll:true}));
+      sync();
+    })();
+  </script>
+</body>
+</html>
