@@ -115,8 +115,9 @@
     .about-image{position:relative;min-width:0;margin:0;aspect-ratio:4/5;background:#e6eefa;overflow:hidden}
     .about-image img{display:block;width:100%;height:100%;object-fit:cover}
     .about-image figcaption{position:absolute;inset:auto 0 0;padding:52px 20px 17px;background:linear-gradient(0deg,rgb(13 29 39 / .68),transparent);color:white;font-size:11px;letter-spacing:.025em}
-    /* Review controls are separate from the five website compositions. */
+    /* Each content group has its own selectable designs and contextual tabs. */
     .review{position:fixed;z-index:40;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;max-width:calc(100% - 32px);padding:7px;border:1px solid rgb(255 255 255 / .22);border-radius:9px;background:rgb(16 33 44 / .95);box-shadow:0 8px 30px rgb(0 0 0 / .1);backdrop-filter:blur(18px)}
+    .review[hidden]{display:none}
     .review-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:0 15px;color:var(--beige)}
     .variant-links{display:flex;gap:3px}
     .variant-links a{display:flex;align-items:center;justify-content:center;gap:9px;padding:0 14px;min-width:46px;min-height:44px;border-radius:5px;font-size:11px;color:#f1f6fa;transition:background 200ms,color 200ms}
@@ -131,6 +132,63 @@
     /* Only animate after a section enters view. Base content stays visible. */
     .hero.is-entering [data-reveal]{animation:arrive 650ms var(--ease) both;animation-delay:var(--delay,0ms)}
     @keyframes arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .service-variant{position:relative;min-height:100svh;overflow:hidden}
+    .service-variant[hidden]{display:none}
+    .service-shell{width:100%;max-width:1440px;min-height:100svh;margin:auto;padding:clamp(100px,11vw,150px) var(--gutter);display:flex;flex-direction:column;justify-content:center}
+    .service-eyebrow{display:flex;align-items:center;gap:13px;margin:0 0 24px;font-size:10px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;line-height:1.7}
+    .service-eyebrow::before{content:'';width:25px;height:1px;background:currentColor;flex-shrink:0}
+    .service-variant h2{font-size:clamp(40px,5.3vw,76px);max-width:850px}
+    .service-intro{max-width:550px;margin:24px 0 0;font-size:16px;line-height:1.8;color:#566779}
+    .service-cta{margin-top:28px;background:var(--blue);color:white}
+    .service-cta:hover{background:#1b5679}
+    .service-image{min-width:0;margin:0;overflow:hidden;background:#e6eefa}
+    .service-image img{display:block;width:100%;height:100%;object-fit:cover}
+    .service-one{background:#fff;color:var(--ink)}
+    .service-one .service-shell{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(48px,8vw,120px);align-items:center}
+    .service-one .service-image{height:min(68svh,680px);aspect-ratio:4/5}
+    .service-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:34px}
+    .service-list-item{padding-top:16px;border-top:1px solid #d8e2ea}
+    .service-list-item strong{display:block;font-size:13px;font-weight:700}
+    .service-list-item p{margin:8px 0 0;font-size:12px;line-height:1.7;color:#566779}
+    .service-two{background:var(--ice);color:var(--ink)}
+    .service-two .service-shell{max-width:1280px}
+    .service-two .service-heading{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);align-items:end;gap:48px}
+    .service-two .service-intro{margin:0 0 7px}
+    .service-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(48px,7vw,92px);border-top:1px solid #b9c9d5}
+    .service-step{position:relative;padding:24px clamp(16px,2.5vw,34px) 0 0}
+    .service-step+.service-step{padding-left:clamp(16px,2.5vw,34px);border-left:1px solid #b9c9d5}
+    .service-step-number{display:block;margin-bottom:38px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.1em}
+    .service-step h3{margin:0;font-size:clamp(19px,2.1vw,28px);font-weight:650;letter-spacing:-.035em}
+    .service-step p{max-width:300px;margin:12px 0 0;color:#566779;font-size:13px;line-height:1.8}
+    .service-three{background:#172c44;color:#fff}
+    .service-three::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgb(13 29 39 / .9),rgb(13 29 39 / .68) 51%,rgb(13 29 39 / .22)),url('assets/team-process.webp') center 48%/cover no-repeat}
+    .service-three .service-shell{position:relative;z-index:1;justify-content:flex-end;padding-bottom:clamp(105px,13vw,168px)}
+    .service-three .service-eyebrow{color:var(--beige)}
+    .service-three h2{max-width:960px}
+    .service-three .service-intro{color:#f1f3f4}
+    .service-three .service-steps{border-color:rgb(255 255 255 / .34)}
+    .service-three .service-step+.service-step{border-color:rgb(255 255 255 / .34)}
+    .service-three .service-step-number{color:var(--beige)}
+    .service-three .service-step p{color:#e3e8ec}
+    .service-four{background:#e6eefa;color:var(--ink)}
+    .service-four .service-shell{max-width:1440px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(42px,7vw,100px);align-items:center}
+    .service-four .service-image{height:min(62svh,610px);aspect-ratio:1.35}
+    .service-four .service-copy{grid-column:2;grid-row:1}
+    .service-four .service-image{grid-column:1;grid-row:1}
+    .service-four .service-intro{max-width:520px}
+    .service-four .service-list{grid-template-columns:1fr;margin-top:28px;gap:18px}
+    .service-four .service-list-item{display:grid;grid-template-columns:minmax(130px,.7fr) minmax(0,1fr);gap:20px;padding-top:13px}
+    .service-four .service-list-item p{margin:0}
+    .service-five{background:#f6f3ed;color:var(--ink)}
+    .service-five .service-shell{max-width:1320px}
+    .service-five .service-heading{max-width:1050px;padding-bottom:clamp(42px,6vw,74px);border-bottom:1px solid #d7d1c6}
+    .service-five .service-heading h2{max-width:1000px}
+    .service-five .service-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,.7fr);gap:48px;align-items:end;margin-top:34px}
+    .service-five .service-intro{margin:0}
+    .service-five .service-place{justify-self:end;display:flex;align-items:center;gap:14px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .service-five .service-place svg{width:34px;height:34px;color:var(--blue)}
+    .service-five .service-cta{width:fit-content}
+    .service-variant.is-entering .service-shell{animation:arrive 500ms var(--ease) both}
     dialog{position:fixed;width:min(560px,calc(100% - 32px));max-height:calc(100svh - 48px);padding:clamp(26px,5vw,48px);border:0;border-radius:8px;background:var(--ice);color:var(--ink);box-shadow:0 24px 100px rgb(0 0 0 / .2)}
     dialog::backdrop{background:rgb(13 29 39 / .68);backdrop-filter:blur(6px)}
     dialog h2{font-size:clamp(28px,4vw,38px);margin:24px 0}
@@ -152,6 +210,10 @@
       .bond-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:36px}
       .bond-heading h2{font-size:clamp(42px,6vw,66px)}
       .about-grid{grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:40px}
+      .service-one .service-shell,.service-four .service-shell{gap:40px}
+      .service-one .service-shell{grid-template-columns:minmax(0,1fr) minmax(280px,.9fr)}
+      .service-four .service-shell{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+      .service-two .service-heading{gap:30px}
     }
     @media(max-width:700px){
       :root{--gutter:24px}
@@ -189,7 +251,32 @@
       .about-lead{font-size:16px;margin-top:22px}
       .about-image{aspect-ratio:4/3}
       .review{bottom:max(14px,env(safe-area-inset-bottom));padding:5px;gap:2px;max-width:calc(100% - 24px)}
-      .variant-links{gap:1px}.variant-links a{min-width:43px;padding:0 9px;font-size:11px}.variant-links a span{font-size:11px;opacity:1}.variant-name{display:none}.replay{margin-left:2px;padding-inline:9px;min-width:40px}
+      .review-label{display:none}
+      .variant-links{gap:1px}.variant-links a{min-width:43px;padding:0 9px;font-size:11px}.variant-links a span{display:none}.variant-name{display:inline;font-size:10px}.replay{margin-left:2px;padding-inline:9px;min-width:40px}
+      .service-variant,.service-shell{min-height:100svh}
+      .service-shell{padding-top:110px;padding-bottom:100px}
+      .service-one .service-shell,.service-four .service-shell{grid-template-columns:minmax(0,1fr);gap:30px;align-content:center}
+      .service-one .service-image,.service-four .service-image{grid-column:1;grid-row:2;height:auto;aspect-ratio:4/3}
+      .service-four .service-copy{grid-column:1;grid-row:1}
+      .service-variant h2{font-size:clamp(36px,9vw,58px)}
+      .service-intro{font-size:14px;margin-top:18px}
+      .service-list{gap:16px;margin-top:26px}
+      .service-one .service-list-item{padding-top:12px}
+      .service-one .service-list-item p{font-size:11px}
+      .service-two .service-heading,.service-five .service-bottom{grid-template-columns:minmax(0,1fr);gap:22px}
+      .service-two .service-intro{margin:0}
+      .service-steps{grid-template-columns:minmax(0,1fr);margin-top:38px}
+      .service-step,.service-step+.service-step{display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:12px;padding:17px 0;border-left:0;border-bottom:1px solid #b9c9d5}
+      .service-step-number{grid-row:1/span 2;margin:3px 0 0}
+      .service-step h3{font-size:20px}
+      .service-step p{margin-top:5px;font-size:12px}
+      .service-three .service-shell{justify-content:center;padding-bottom:100px}
+      .service-four .service-list{gap:14px;margin-top:20px}
+      .service-four .service-list-item{grid-template-columns:minmax(0,1fr);gap:5px;padding-top:10px}
+      .service-four .service-list-item p{font-size:11px}
+      .service-five .service-heading{padding-bottom:32px}
+      .service-five .service-place{justify-self:start}
+      .service-cta{margin-top:22px}
     }
     @media(max-height:620px) and (min-width:701px){.hero-inner{min-height:740px}.traca .hero-inner,.criteri .hero-inner{padding-top:150px}.header{height:80px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.replay{display:none}}
@@ -207,6 +294,7 @@
   </header>
 
   <main id="main">
+    <div id="hero-group" class="variant-group">
     <section class="hero traca" id="traca" role="tabpanel" aria-labelledby="title-traca" tabindex="0" data-name="Traç">
       <img class="photo" src="assets/hero-home.webp" alt="" fetchpriority="high">
       <div class="shade" aria-hidden="true"></div>
@@ -298,6 +386,81 @@
       </div>
       <p class="caption" data-reveal>De la neteja, ens n’ocupem nosaltres.</p>
     </section>
+    </div>
+
+    <div id="services-group" class="variant-group">
+      <section class="service-variant service-one" id="service-cura" role="tabpanel" aria-labelledby="service-cura-title" tabindex="0">
+        <div class="service-shell">
+          <div class="service-copy">
+            <p class="service-eyebrow">01 · Una cura a mida</p>
+            <h2 id="service-cura-title">Cada casa té el seu ritme.</h2>
+            <p class="service-intro">La neteja s’adapta al que necessita casa teva: una cura regular per al dia a dia o una neteja a fons quan cal començar de nou.</p>
+            <div class="service-list">
+              <div class="service-list-item"><strong>Manteniment</strong><p>Per conservar cada espai net i endreçat, visita rere visita.</p></div>
+              <div class="service-list-item"><strong>Neteja a fons</strong><p>Una atenció més profunda als espais i als detalls de casa.</p></div>
+            </div>
+            <a class="action service-cta" href="#servei" data-service>Parlem del que necessites <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="service-image"><img src="assets/service-deep.webp" alt="Bany net i cuidat, amb els detalls ben atesos" loading="lazy" decoding="async"></figure>
+        </div>
+      </section>
+
+      <section class="service-variant service-two" id="service-ritme" role="tabpanel" aria-labelledby="service-ritme-title" tabindex="0" hidden>
+        <div class="service-shell">
+          <p class="service-eyebrow">02 · Una manera de fer</p>
+          <div class="service-heading"><h2 id="service-ritme-title">La tranquil·litat comença amb una bona conversa.</h2><p class="service-intro">Escoltem com vius casa teva i acordem una manera de cuidar-la que encaixi amb tu.</p></div>
+          <div class="service-steps">
+            <article class="service-step"><span class="service-step-number">01</span><h3>Ens expliques</h3><p>Què és important per a tu, quins espais vols cuidar i com és el teu dia a dia.</p></article>
+            <article class="service-step"><span class="service-step-number">02</span><h3>Ho acordem</h3><p>Definim si necessites manteniment habitual o una neteja a fons.</p></article>
+            <article class="service-step"><span class="service-step-number">03</span><h3>En tenim cura</h3><p>Treballem amb respecte pels espais, els materials i les teves preferències.</p></article>
+          </div>
+          <a class="action service-cta" href="#servei" data-service>Comencem parlant <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="service-variant service-three" id="service-respecte" role="tabpanel" aria-labelledby="service-respecte-title" tabindex="0" hidden>
+        <div class="service-shell">
+          <p class="service-eyebrow">03 · El respecte pels detalls</p>
+          <h2 id="service-respecte-title">Cuidar també és saber com tocar cada superfície.</h2>
+          <p class="service-intro">Cada llar és diferent. Ens expliques què hem de tenir en compte i acordem com treballar-hi amb cura.</p>
+          <div class="service-steps">
+            <article class="service-step"><span class="service-step-number">A</span><h3>Els teus espais</h3><p>Escoltem les indicacions i les prioritats de casa teva.</p></article>
+            <article class="service-step"><span class="service-step-number">B</span><h3>Els teus materials</h3><p>Acordem com fer servir l’equip de casa i tenir cura de les superfícies.</p></article>
+            <article class="service-step"><span class="service-step-number">C</span><h3>El teu ritme</h3><p>Una atenció propera, pensada per a cada llar i cada visita.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-variant service-four" id="service-espais" role="tabpanel" aria-labelledby="service-espais-title" tabindex="0" hidden>
+        <div class="service-shell">
+          <figure class="service-image"><img src="assets/hygiene-tools.webp" alt="Estris de neteja preparats per cuidar la llar" loading="lazy" decoding="async"></figure>
+          <div class="service-copy">
+            <p class="service-eyebrow">04 · Espais ben cuidats</p>
+            <h2 id="service-espais-title">Una bona neteja també es nota en com es fa.</h2>
+            <p class="service-intro">Parlem dels productes i estris que prefereixes i de les superfícies que demanen una atenció especial.</p>
+            <div class="service-list">
+              <div class="service-list-item"><strong>Equip de casa</strong><p>Acordem l’ús de l’aspirador, la mopa i els estris que ja tens.</p></div>
+              <div class="service-list-item"><strong>Atenció als materials</strong><p>Tenim en compte les superfícies i evitem la contaminació creuada.</p></div>
+              <div class="service-list-item"><strong>El teu criteri</strong><p>Ens indiques què vols prioritzar i ho incorporem a la manera de fer.</p></div>
+            </div>
+            <a class="action service-cta" href="#servei" data-service>Explica’ns casa teva <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-variant service-five" id="service-prop" role="tabpanel" aria-labelledby="service-prop-title" tabindex="0" hidden>
+        <div class="service-shell">
+          <div class="service-heading">
+            <p class="service-eyebrow">05 · A prop de tu</p>
+            <h2 id="service-prop-title">La cura de casa teva, aquí mateix.</h2>
+          </div>
+          <div class="service-bottom">
+            <div><p class="service-intro">Som un servei de neteja de llars a Vic i Osona. Una manera de fer propera, atenta i pensada per entendre què necessita cada casa.</p><a class="action service-cta" href="#servei" data-service>Parlem de casa teva <span aria-hidden="true">↗</span></a></div>
+            <div class="service-place"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="16" stroke="currentColor"/><path d="M20 29s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13Z" stroke="currentColor"/><circle cx="20" cy="16" r="2.5" fill="currentColor"/></svg><span>Vic<br>i Osona</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <section class="about" id="sobre-nosaltres" aria-labelledby="about-title">
       <div class="about-inner">
@@ -318,9 +481,9 @@
     </section>
   </main>
 
-  <aside class="review" aria-label="Controls de les cinc propostes">
-    <span class="review-label">Propostes</span>
-    <nav class="variant-links" role="tablist" aria-label="Tria una composició">
+  <aside class="review" id="hero-review" aria-label="Propostes de portada">
+    <span class="review-label">Portada</span>
+    <nav class="variant-links" role="tablist" aria-label="Tria una portada">
       <a href="#traca" id="tab-traca" role="tab" aria-controls="traca" aria-label="Proposta 1: Traç" aria-selected="true" tabindex="0"><span>01</span><b class="variant-name">Traç</b></a>
       <a href="#llindar" id="tab-llindar" role="tab" aria-controls="llindar" aria-label="Proposta 2: Llindar" aria-selected="false" tabindex="-1"><span>02</span><b class="variant-name">Llindar</b></a>
       <a href="#vincle" id="tab-vincle" role="tab" aria-controls="vincle" aria-label="Proposta 3: Vincle" aria-selected="false" tabindex="-1"><span>03</span><b class="variant-name">Vincle</b></a>
@@ -330,6 +493,17 @@
     <button class="replay" type="button" title="Torna a veure l’entrada" aria-label="Repeteix l’animació de la proposta actual" hidden>
       <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 7a6.5 6.5 0 1 1-.1 6M4 2v5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
+  </aside>
+
+  <aside class="review" id="services-review" aria-label="Variants de serveis" hidden>
+    <span class="review-label">Serveis</span>
+    <nav class="variant-links" role="tablist" aria-label="Tria un disseny de serveis">
+      <a href="#service-cura" id="tab-service-cura" role="tab" aria-controls="service-cura" aria-label="Disseny 1: Una cura a mida" aria-selected="true" tabindex="0"><span>01</span><b class="variant-name">A mida</b></a>
+      <a href="#service-ritme" id="tab-service-ritme" role="tab" aria-controls="service-ritme" aria-label="Disseny 2: Una manera de fer" aria-selected="false" tabindex="-1"><span>02</span><b class="variant-name">Procés</b></a>
+      <a href="#service-respecte" id="tab-service-respecte" role="tab" aria-controls="service-respecte" aria-label="Disseny 3: Respecte pels detalls" aria-selected="false" tabindex="-1"><span>03</span><b class="variant-name">Detalls</b></a>
+      <a href="#service-espais" id="tab-service-espais" role="tab" aria-controls="service-espais" aria-label="Disseny 4: Espais ben cuidats" aria-selected="false" tabindex="-1"><span>04</span><b class="variant-name">Espais</b></a>
+      <a href="#service-prop" id="tab-service-prop" role="tab" aria-controls="service-prop" aria-label="Disseny 5: A prop de tu" aria-selected="false" tabindex="-1"><span>05</span><b class="variant-name">A prop</b></a>
+    </nav>
   </aside>
 
   <dialog id="servei" aria-labelledby="service-title">
@@ -347,8 +521,14 @@
   <script>
     (() => {
       const heroes = [...document.querySelectorAll('.hero')];
-      const links = [...document.querySelectorAll('.variant-links a')];
+      const servicePanels = [...document.querySelectorAll('.service-variant')];
+      const heroLinks = [...document.querySelectorAll('#hero-review .variant-links a')];
+      const serviceLinks = [...document.querySelectorAll('#services-review .variant-links a')];
       const header = document.querySelector('.header');
+      const heroGroup = document.querySelector('#hero-group');
+      const servicesGroup = document.querySelector('#services-group');
+      const heroReview = document.querySelector('#hero-review');
+      const servicesReview = document.querySelector('#services-review');
       const replay = document.querySelector('.replay');
       const reduced = matchMedia('(prefers-reduced-motion: reduce)');
       let current = heroes[0];
@@ -375,7 +555,7 @@
 
       function selectHero(hero, animate = true) {
         heroes.forEach(panel => { panel.hidden = panel !== hero; });
-        links.forEach(link => {
+        heroLinks.forEach(link => {
           const selected = link.hash === `#${hero.id}`;
           link.setAttribute('aria-selected', String(selected));
           link.tabIndex = selected ? 0 : -1;
@@ -385,10 +565,59 @@
         scheduleSync();
       }
 
+      function selectService(panel, animate = true) {
+        servicePanels.forEach(item => { item.hidden = item !== panel; });
+        serviceLinks.forEach(link => {
+          const selected = link.hash === `#${panel.id}`;
+          link.setAttribute('aria-selected', String(selected));
+          link.tabIndex = selected ? 0 : -1;
+        });
+        if (animate && !reduced.matches) {
+          panel.classList.remove('is-entering');
+          void panel.offsetWidth;
+          panel.classList.add('is-entering');
+          setTimeout(() => panel.classList.remove('is-entering'), 1200);
+        }
+        scheduleSync();
+      }
+
+      function bindTabs(panels, tabs, select) {
+        tabs.forEach((link, index) => {
+          link.addEventListener('click', event => {
+            const panel = panels.find(item => `#${item.id}` === link.hash);
+            if (!panel) return;
+            event.preventDefault();
+            select(panel);
+            if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+            panel.scrollIntoView({behavior:reduced.matches ? 'auto' : 'smooth', block:'start'});
+          });
+          link.addEventListener('keydown', event => {
+            let next = index;
+            if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+            else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+            else if (event.key === 'Home') next = 0;
+            else if (event.key === 'End') next = tabs.length - 1;
+            else return;
+            event.preventDefault();
+            tabs[next].focus();
+            tabs[next].click();
+          });
+        });
+      }
+
+      bindTabs(heroes, heroLinks, selectHero);
+      bindTabs(servicePanels, serviceLinks, selectService);
+
       function sync() {
         frame = 0;
         header.classList.toggle('is-scrolled', scrollY > 32);
         const targetY = innerHeight * .5;
+        const heroRect = heroGroup.getBoundingClientRect();
+        const serviceRect = servicesGroup.getBoundingClientRect();
+        const activeGroup = heroRect.top <= targetY && heroRect.bottom > targetY ? 'hero' :
+          serviceRect.top <= targetY && serviceRect.bottom > targetY ? 'services' : '';
+        heroReview.hidden = activeGroup !== 'hero';
+        servicesReview.hidden = activeGroup !== 'services';
         current = heroes.reduce((best, hero) => {
           const rect = hero.getBoundingClientRect();
           return rect.top <= targetY && rect.bottom > targetY ? hero : best;
@@ -399,35 +628,21 @@
       addEventListener('scroll', scheduleSync, {passive:true});
       addEventListener('resize', scheduleSync);
       addEventListener('pageshow', scheduleSync);
-      links.forEach((link, index) => {
-        link.addEventListener('click', event => {
-          const hero = heroes.find(panel => `#${panel.id}` === link.hash);
-          if (!hero) return;
-          event.preventDefault();
-          selectHero(hero);
-          if (location.hash !== link.hash) history.pushState(null, '', link.hash);
-          hero.scrollIntoView({behavior:reduced.matches ? 'auto' : 'smooth', block:'start'});
-        });
-        link.addEventListener('keydown', event => {
-          let next = index;
-          if (event.key === 'ArrowRight') next = (index + 1) % links.length;
-          else if (event.key === 'ArrowLeft') next = (index - 1 + links.length) % links.length;
-          else if (event.key === 'Home') next = 0;
-          else if (event.key === 'End') next = links.length - 1;
-          else return;
-          event.preventDefault();
-          links[next].focus();
-          links[next].click();
-        });
-      });
       addEventListener('hashchange', () => {
         const hero = heroes.find(panel => `#${panel.id}` === location.hash);
         if (hero) selectHero(hero, false);
+        const service = servicePanels.find(panel => `#${panel.id}` === location.hash);
+        if (service) selectService(service, false);
       });
       const initialHero = heroes.find(panel => `#${panel.id}` === location.hash);
       if (initialHero && initialHero !== current) {
         selectHero(initialHero, false);
         initialHero.scrollIntoView({block:'start'});
+      }
+      const initialService = servicePanels.find(panel => `#${panel.id}` === location.hash);
+      if (initialService) {
+        selectService(initialService, false);
+        initialService.scrollIntoView({block:'start'});
       }
       replay.hidden = false;
       replay.addEventListener('click', () => reveal(current, true));
