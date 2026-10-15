@@ -226,96 +226,105 @@
     }
     @media(max-height:620px) and (min-width:701px){.hero-inner{min-height:740px}.traca .hero-inner,.criteri .hero-inner{padding-top:150px}.header{height:80px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.replay{display:none}}
-    .services-top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid #cad6de;margin-bottom:54px}
-    .services-top .service-eyebrow{margin:0;font-size:9px}
-    .services-meta{font-size:10px;color:#566779}
-    .service-variant em{font-style:normal;color:var(--blue)}
-    .service-text-link{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:48px;font-size:12px;font-weight:700;border-bottom:1px solid currentColor;width:fit-content}
-    .service-text-link:hover{color:var(--blue)}
-    .service-includes{list-style:none;padding:0;margin:28px 0 32px}
-    .service-includes li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid #d8e2ea;font-size:12px;line-height:1.6}
-    .service-includes li::before{content:'↳';color:var(--blue)}
-    .service-compare{background:#f1f6fa;color:var(--ink)}
-    .compare-heading{display:grid;grid-template-columns:1.3fr .7fr;gap:70px;align-items:end}
-    .compare-heading h2{font-size:clamp(45px,5.5vw,80px)}
-    .compare-heading .service-intro{font-size:14px;margin:0;max-width:340px}
-    .compare-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:52px;border:1px solid #cbd9e2}
-    .compare-option{padding:clamp(24px,3.5vw,48px);background:#fff}
-    .compare-option+ .compare-option{background:#e5edf3;border-left:1px solid #cbd9e2}
-    .option-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--blue)}
-    .option-top>span:last-child{font-size:25px;font-weight:400}
-    .compare-option h3{margin:0;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.05em;line-height:1.12;font-weight:600}
-    .compare-option>p{max-width:350px;font-size:14px;line-height:1.8;color:#566779;margin:20px 0 0}
-    .services-foot{display:flex;align-items:center;gap:18px;margin-top:26px}
-    .care-mark{font-size:38px;color:var(--blue)}
-    .services-foot p{font-size:12px;color:#566779;line-height:1.7;max-width:440px;margin:0}
-    .services-foot>a{margin-left:auto;font-size:12px;font-weight:700;min-height:44px;display:flex;align-items:center}
-    .service-catalog{background:#fff;color:var(--ink)}
-    .catalog-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(42px,7vw,100px);align-items:start}
-    .catalog-intro{position:sticky;top:110px}
-    .catalog-intro h2{font-size:clamp(42px,5.2vw,72px)}
-    .catalog-intro .service-intro{max-width:340px;font-size:14px}
-    .catalog-note{font-size:11px;color:#566779;line-height:1.8;margin-top:30px;padding-left:14px;border-left:2px solid var(--lime)}
-    .catalog-options details{border-top:1px solid #cad6de}
-    .catalog-options details:last-child{border-bottom:1px solid #cad6de}
-    .catalog-options summary{display:flex;align-items:center;gap:17px;cursor:pointer;list-style:none;min-height:83px;font-size:clamp(16px,1.7vw,23px);font-weight:600;letter-spacing:-.035em}
-    .catalog-options summary::-webkit-details-marker{display:none}
-    .catalog-index{font-size:10px;letter-spacing:0;color:var(--blue);font-weight:600}
-    .catalog-toggle{margin-left:auto;display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:var(--ice);font-size:23px;font-weight:400;flex-shrink:0;transition:transform .2s}
-    details[open] .catalog-toggle{transform:rotate(45deg);background:var(--lime)}
-    .catalog-detail{padding:0 0 26px 31px}
-    .catalog-detail img{width:100%;aspect-ratio:1.9;object-fit:cover;display:block}
-    .catalog-detail p{font-size:13px;line-height:1.85;color:#566779;max-width:440px;margin:20px 0 16px}
-    .catalog-tag{display:inline-block;padding:7px 10px;background:var(--ice);font-size:9px;letter-spacing:.04em;color:var(--blue)}
-    .service-ledger{background:#172c44;color:#fff}
-    .service-ledger .services-top{border-color:#425367}
-    .service-ledger .services-meta{color:#bccbd6}
-    .ledger-heading{display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:end}
-    .ledger-heading h2{font-size:clamp(45px,5.6vw,82px)}
-    .service-ledger em{color:var(--beige)}
-    .ledger-heading .service-intro{font-size:14px;color:#c5d1dc;margin:0 0 18px}
-    .service-ledger .service-text-link{color:var(--lime)}
-    .ledger-rows{margin-top:64px;border-top:1px solid #526276}
-    .ledger-rows article{display:grid;grid-template-columns:45px 1.05fr 1fr 135px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid #425367}
-    .ledger-number{font-size:10px;color:var(--lime);align-self:start;padding-top:9px}
-    .ledger-rows h3{font-size:clamp(27px,3.2vw,44px);font-weight:500;letter-spacing:-.045em;margin:0}
-    .ledger-rows p{max-width:330px;font-size:12px;line-height:1.8;color:#c5d1dc;margin:0}
-    .ledger-label{font-size:9px;letter-spacing:.04em;justify-self:end;color:var(--beige);padding:8px 10px;border:1px solid #526276;border-radius:3px}
-    .ledger-footer{display:flex;align-items:center;gap:18px;padding-top:34px}
-    .ledger-footer>span:first-child{font-size:49px;color:var(--lime)}
-    .ledger-footer p{font-size:12px;line-height:1.7;margin:0;color:#dbe3e9}
-    .ledger-footer>span:last-child{font-size:10px;line-height:1.8;margin-left:auto;text-align:right;color:#bccbd6}
-    .service-atlas{background:#f7f5ef;color:var(--ink)}
-    .atlas-grid{display:grid;grid-template-columns:1fr .45fr 1fr;gap:28px;align-items:start}
-    .atlas-heading{grid-column:1/3;grid-row:1;padding:16px 38px 28px 0}
-    .atlas-heading h2{font-size:clamp(42px,5vw,72px)}
-    .atlas-heading .service-intro{font-size:14px;max-width:380px}
-    .atlas-large{grid-column:3;grid-row:1/3;margin:0;align-self:stretch}
-    .atlas-large img{width:100%;height:calc(100% - 38px);min-height:460px;object-fit:cover;display:block}
-    .atlas-grid figcaption{font-size:9px;letter-spacing:.03em;display:flex;justify-content:space-between;padding-top:13px;color:#566779}
-    .atlas-small{grid-column:1;grid-row:2;margin:0;align-self:end}
-    .atlas-small img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-    .atlas-menu{grid-column:2;grid-row:2;align-self:end;min-width:0}
-    .atlas-menu article{display:flex;gap:12px;border-top:1px solid #c9cfcf;padding:18px 0}
-    .atlas-menu article>span{font-size:9px;color:var(--blue);padding-top:4px}
-    .atlas-menu h3{font-size:15px;font-weight:650;letter-spacing:-.03em;margin:0}
-    .atlas-menu p{font-size:11px;line-height:1.8;color:#566779;margin:9px 0 0}
-    .atlas-menu .action{font-size:10px;padding:14px;gap:18px;min-height:50px;margin-top:12px}
-    @media(min-width:1001px){.atlas-grid{grid-template-columns:.7fr .85fr 1fr}.atlas-heading{grid-column:1/3}.atlas-small{grid-column:1}.atlas-menu{grid-column:2}}
+    /* Clear service choices, soft photography and comfortable touch targets. */
+    .service-image,.about-image{border-radius:22px}
+    .care-heading{max-width:740px;margin:0 auto 42px;text-align:center}
+    .care-heading .service-eyebrow{justify-content:center;margin-bottom:17px;color:var(--blue)}
+    .service-variant .care-heading h2{font-size:clamp(36px,4.2vw,59px);line-height:1.13;letter-spacing:-.05em}
+    .care-heading>p:last-child{max-width:570px;margin:20px auto 0;font-size:15px;line-height:1.85;color:#566779}
+    .care-icon{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;flex-shrink:0;border-radius:14px;background:#eaf2f7;color:var(--blue)}
+    .care-icon svg{width:24px;height:24px}
+    .care-checks{padding:0;list-style:none;display:grid;gap:13px;margin:25px 0 29px}
+    .care-checks li{display:flex;gap:11px;align-items:baseline;color:#566779;font-size:13px;line-height:1.7}
+    .care-checks li::before{content:'✓';font-family:Arial,sans-serif;font-weight:700;color:var(--blue);flex-shrink:0}
+    .care-kicker{font-size:10px;font-weight:700;letter-spacing:.09em;color:var(--blue);line-height:1.7}
+    .services-photos{background:var(--ice);color:var(--ink)}
+    .services-photos .service-shell{max-width:1340px}
+    .photo-service-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .photo-service-card{padding:12px;background:#fff;border:1px solid #e1e9ef;border-radius:26px;box-shadow:0 14px 38px rgb(23 44 68 / .045)}
+    .photo-service-media{position:relative}
+    .photo-service-media img{display:block;width:100%;height:230px;object-fit:cover;border-radius:17px}
+    .photo-service-tag{position:absolute;left:17px;bottom:16px;display:inline-block;padding:8px 12px;border-radius:8px;background:#fff;color:var(--ink);font-size:10px;font-weight:650;box-shadow:0 3px 14px rgb(23 44 68 / .08)}
+    .photo-service-copy{padding:24px 20px 20px}
+    .care-card-heading{display:flex;gap:14px;align-items:center}
+    .care-card-heading h3{margin:0;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.045em;font-weight:650}
+    .photo-service-copy>p{margin:18px 0 0;color:#566779;font-size:14px;line-height:1.8;max-width:360px}
+    .photo-service-copy .action{width:100%;margin-top:0}
+    .care-assurance{display:flex;align-items:center;justify-content:center;gap:16px;margin:30px auto 0;padding:20px 26px;border:1px solid #dce8e1;border-radius:16px;background:#edf5ec;max-width:850px}
+    .care-assurance .care-icon{background:#dcecd7;color:#355b2e}
+    .care-assurance strong{font-size:13px;font-weight:650}
+    .care-assurance p{font-size:12px;color:#566779;line-height:1.7;margin:5px 0 0}
+    .services-welcome{background:#fff;color:var(--ink)}
+    .welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6.5vw,96px);align-items:center}
+    .welcome-photo{position:relative;padding:0 22px 30px 0}
+    .welcome-photo>img{display:block;width:100%;height:670px;object-fit:cover;object-position:55% center;border-radius:26px}
+    .welcome-note{position:absolute;bottom:0;right:0;left:34px;display:flex;align-items:center;gap:15px;padding:23px;border:1px solid #e4ebe6;border-radius:17px;background:#f3f8f0;box-shadow:0 14px 38px rgb(23 44 68 / .08)}
+    .welcome-note .care-icon{background:#deebd7;color:#355b2e}
+    .welcome-note strong{display:block;font-size:15px;letter-spacing:-.02em}
+    .welcome-note div>span{display:block;font-size:11px;color:#566779;margin-top:7px;line-height:1.7}
+    .welcome-copy .care-heading{text-align:left;margin-bottom:27px}
+    .welcome-copy .service-eyebrow{justify-content:flex-start}
+    .welcome-copy .care-heading h2{font-size:clamp(36px,4vw,56px)}
+    .welcome-copy .care-heading>p:last-child{margin-left:0;font-size:14px}
+    .welcome-services{display:grid;gap:13px}
+    .welcome-services article{display:flex;gap:16px;padding:21px;background:var(--ice);border:1px solid #e3ecf2;border-radius:17px}
+    .welcome-services h3{margin:0;font-size:18px;font-weight:650;letter-spacing:-.035em}
+    .welcome-services p{margin:8px 0 0;color:#566779;line-height:1.8;font-size:13px}
+    .welcome-services .care-icon{background:#fff}
+    .welcome-copy .action{margin-top:27px}
+    .welcome-foot{font-size:10px;line-height:1.7;color:#566779;margin:17px 0 0}
+    .services-choice{background:#f5f3ee;color:var(--ink)}
+    .services-choice .service-shell{max-width:1370px}
+    .choice-box{padding:12px;background:#fff;border:1px solid #e7e4dd;border-radius:27px;box-shadow:0 18px 50px rgb(23 44 68 / .05)}
+    .care-choice{display:flex;width:fit-content;max-width:100%;gap:5px;padding:5px;border:0;border-radius:14px;background:var(--ice);margin:15px auto 29px;min-width:0}
+    .care-choice label{position:relative;cursor:pointer;flex:1}
+    .care-choice input{position:absolute;opacity:0;width:1px;height:1px}
+    .care-choice label>span{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;min-height:52px;line-height:1.5;border-radius:10px;color:#566779;font-size:13px;font-weight:650;transition:background .2s,color .2s}
+    .care-choice svg{width:20px;height:20px;flex-shrink:0}
+    .care-choice input:checked+span{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgb(40 109 150 / .16)}
+    .care-choice input:focus-visible+span{outline:3px solid #c29148;outline-offset:3px}
+    .choice-detail{display:none;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:center}
+    .choice-box:has(input[value=maintenance]:checked) .choice-maintenance,.choice-box:has(input[value=deep]:checked) .choice-deep{display:grid}
+    .choice-photo img{display:block;width:100%;height:500px;object-fit:cover;border-radius:18px}
+    .choice-copy{padding:20px 30px 27px 0}
+    .choice-copy h3{font-size:clamp(28px,3.2vw,44px);font-weight:600;letter-spacing:-.045em;line-height:1.15;margin:16px 0 20px}
+    .choice-copy>p{font-size:14px;line-height:1.85;color:#566779;margin:0}
+    .choice-copy .action{margin-top:0}
+    .choice-foot{display:flex;justify-content:center;align-items:center;gap:10px;font-size:12px;line-height:1.7;color:#566779;margin:25px 0 0}
+    .choice-foot svg{width:20px;height:20px;flex-shrink:0;color:var(--blue)}
+    .services-comfort{background:#172c44;color:white}
+    .services-comfort .service-shell{max-width:1340px}
+    .services-comfort .service-eyebrow{color:var(--lime)}
+    .services-comfort .care-heading>p:last-child{color:#c7d4df}
+    .comfort-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .comfort-card{background:#fff;color:var(--ink);padding:clamp(26px,3.5vw,45px);border-radius:24px}
+    .comfort-card:nth-child(2){background:#f0f5f9}
+    .comfort-card-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
+    .comfort-card .care-icon{width:56px;height:56px;background:#e8f1e4;color:#355b2e;border-radius:17px}
+    .comfort-card:nth-child(2) .care-icon{background:#dfebf4;color:var(--blue)}
+    .comfort-card .care-icon svg{width:29px;height:29px}
+    .comfort-card h3{font-size:clamp(25px,2.7vw,36px);font-weight:650;letter-spacing:-.045em;margin:0}
+    .comfort-card>p{font-size:14px;line-height:1.8;color:#566779;max-width:340px;margin:15px 0 0}
+    .comfort-card .care-checks{border-top:1px solid #d8e2ea;padding-top:24px;margin-top:27px}
+    .comfort-card .action{width:100%;margin:0}
+    .comfort-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;border:1px solid #415569;border-radius:17px;margin-top:26px;background:#20394f}
+    .comfort-bottom strong{font-size:15px;font-weight:600}
+    .comfort-bottom p{font-size:12px;color:#c7d4df;line-height:1.8;margin:7px 0 0}
+    .service-secondary{background:var(--lime);color:var(--ink);margin:0;flex-shrink:0}
+    .service-secondary:hover{background:#e1f2d8}
     @media(max-width:1000px){
-      .compare-heading,.ledger-heading{gap:35px;grid-template-columns:1.2fr .8fr}
-      .catalog-grid{gap:36px;grid-template-columns:1fr 1fr}
-      .ledger-rows article{grid-template-columns:28px 1fr 1fr;gap:16px}.ledger-label{display:none}
-      .atlas-grid{grid-template-columns:1fr 1fr}.atlas-heading{grid-column:1;grid-row:1;padding-right:0}.atlas-heading h2{font-size:42px}.atlas-large{grid-column:2;grid-row:1/3}.atlas-large img{min-height:540px}.atlas-small{display:none}.atlas-menu{grid-column:1;grid-row:2}
+      .welcome-grid{gap:32px}.welcome-photo>img{height:610px}.welcome-photo{padding-right:12px}.welcome-note{left:12px;padding:18px}.welcome-note strong{font-size:13px}
+      .welcome-services article{padding:17px;gap:12px}.welcome-services h3{font-size:17px}.care-card-heading{gap:10px}.care-card-heading h3{font-size:23px}
+      .choice-detail{gap:28px}.choice-photo img{height:530px}.choice-copy{padding-right:15px}.choice-copy h3{font-size:32px}
     }
     @media(max-width:700px){
-      .services-top{margin-bottom:32px;gap:14px}.services-meta{display:none}.services-top .service-eyebrow{font-size:9px}
-      .compare-heading,.ledger-heading{grid-template-columns:1fr;gap:24px}.compare-heading h2,.ledger-heading h2{font-size:clamp(39px,10vw,60px)}
-      .compare-grid{grid-template-columns:1fr;margin-top:32px}.compare-option{padding:26px}.compare-option+.compare-option{border-left:0;border-top:1px solid #cbd9e2}
-      .compare-option h3{font-size:35px}.option-top{margin-bottom:22px}.services-foot{flex-wrap:wrap;gap:12px}.services-foot p{flex:1}.services-foot>a{margin-left:49px}
-      .catalog-grid{grid-template-columns:1fr;gap:30px}.catalog-intro{position:static}.catalog-intro h2{font-size:clamp(39px,10vw,60px)}.catalog-note{display:none}.catalog-options summary{font-size:19px;min-height:74px}.catalog-detail{padding-left:0}
-      .ledger-rows{margin-top:36px}.ledger-rows article{grid-template-columns:25px 1fr;gap:10px 16px;padding:25px 0}.ledger-rows h3{font-size:32px}.ledger-rows p{grid-column:2;max-width:none;font-size:13px}.ledger-footer>span:last-child{font-size:9px}.ledger-footer p{font-size:11px}
-      .atlas-grid{grid-template-columns:1fr 1fr;gap:24px 16px}.atlas-heading{grid-column:1/3;grid-row:1}.atlas-heading h2{font-size:clamp(39px,10vw,60px)}.atlas-large{grid-column:1;grid-row:2}.atlas-large img{height:auto;min-height:0;aspect-ratio:.8}.atlas-small{display:block;grid-column:2;grid-row:2;align-self:end}.atlas-small img{aspect-ratio:1}.atlas-menu{grid-column:1/3;grid-row:3;display:grid;grid-template-columns:1fr 1fr;gap:16px}.atlas-menu .action{grid-column:1/3;font-size:12px;padding:17px 23px}.atlas-menu article{gap:10px}.atlas-menu h3{font-size:16px}.atlas-menu p{font-size:12px}
+      .care-heading{margin-bottom:30px}.service-variant .care-heading h2{font-size:clamp(33px,8.6vw,48px)}.care-heading>p:last-child{font-size:14px;margin-top:17px}.care-heading .service-eyebrow{font-size:9px;letter-spacing:.09em}
+      .photo-service-grid,.comfort-grid{grid-template-columns:1fr;gap:21px}.photo-service-media img{height:210px}.photo-service-card{border-radius:22px;padding:9px}.photo-service-copy{padding:23px 14px 17px}.care-card-heading h3{font-size:24px}.care-checks li{font-size:12px}.photo-service-copy>p{font-size:13px}
+      .care-assurance{align-items:flex-start;padding:18px;gap:12px}.care-assurance strong{font-size:12px}.care-assurance p{font-size:11px}.care-assurance .care-icon{width:38px;height:38px;border-radius:11px}
+      .welcome-grid{grid-template-columns:1fr;gap:32px}.welcome-photo{order:2;padding:0 10px 28px 0}.welcome-photo>img{height:340px}.welcome-copy .care-heading{text-align:left}.welcome-note{left:16px;right:0}.welcome-note strong{font-size:14px}.welcome-copy .action{width:100%}.welcome-services article{padding:18px}.welcome-services h3{font-size:18px}.welcome-services p{font-size:13px}
+      .choice-box{padding:9px;border-radius:22px}.care-choice{width:100%;margin:5px auto 18px;gap:4px;padding:4px}.care-choice label>span{gap:7px;padding:10px 8px;font-size:11px;min-height:54px}.care-choice svg{width:17px;height:17px}.choice-detail{grid-template-columns:1fr;gap:0}.choice-photo img{height:240px;border-radius:15px}.choice-copy{padding:26px 14px 20px}.choice-copy h3{font-size:31px}.choice-copy>p{font-size:13px}.choice-copy .action{width:100%;gap:15px;font-size:11px}.choice-foot{font-size:11px;align-items:flex-start;justify-content:flex-start;gap:9px}
+      .comfort-card{padding:27px 24px;border-radius:22px}.comfort-card h3{font-size:27px}.comfort-card-top{margin-bottom:23px}.comfort-card>p{font-size:13px}.comfort-bottom{flex-direction:column;align-items:flex-start;padding:23px}.comfort-bottom .action{width:100%}.comfort-bottom strong{font-size:14px}
+      #services-review .variant-links a{padding-inline:6px;min-width:0}#services-review .variant-name{font-size:10px}#services-review{max-width:calc(100% - 16px)}
     }
   </style>
 </head>
@@ -442,53 +451,31 @@
         </div>
       </section>
 
-      <section class="service-variant service-compare" id="service-ritme" role="tabpanel" aria-labelledby="service-ritme-title" tabindex="0" hidden>
-        <div class="service-shell">
-          <div class="services-top"><p class="service-eyebrow">Serveis · La cura que necessites</p><span class="services-meta">Vic i Osona / Llars</span></div>
-          <div class="compare-heading"><h2 id="service-ritme-title">Dues maneres.<br>La mateixa <em>cura.</em></h2><p class="service-intro">Hi ha cases que necessiten continuïtat. D’altres, una atenció més profunda. T’ajudem a trobar el teu punt de partida.</p></div>
-          <div class="compare-grid">
-            <article class="compare-option"><div class="option-top"><span>01 / EL DIA A DIA</span><span aria-hidden="true">↗</span></div><h3>Manteniment<br>de la llar</h3><p>La cura que acompanya la teva rutina i manté els espais a punt per viure’ls.</p><ul class="service-includes"><li>Una neteja habitual acordada amb tu</li><li>Atenció als espais que prioritzes</li><li>Respecte pels materials de casa</li></ul><a class="service-text-link" href="#servei" data-service>Vull cuidar el dia a dia <span aria-hidden="true">↗</span></a></article>
-            <article class="compare-option"><div class="option-top"><span>02 / QUAN CAL ANAR MÉS ENLLÀ</span><span aria-hidden="true">↗</span></div><h3>Neteja<br>a fons</h3><p>Temps i atenció per arribar als detalls que la neteja quotidiana deixa pendents.</p><ul class="service-includes"><li>Una atenció més profunda dels espais</li><li>Detalls i racons que vols prioritzar</li><li>Abast del servei acordat abans de començar</li></ul><a class="service-text-link" href="#servei" data-service>La meva casa necessita un repàs <span aria-hidden="true">↗</span></a></article>
-          </div>
-          <div class="services-foot"><span class="care-mark" aria-hidden="true">✳</span><p>No saps per on començar? Ens expliques casa teva i ho decidim plegats.</p><a href="#servei" data-service>Parlem-ne ↗</a></div>
-        </div>
-      </section>
+      <section class="service-variant services-photos" id="service-ritme" role="tabpanel" aria-labelledby="service-ritme-title" tabindex="0" hidden><div class="service-shell"><div class="care-heading"><p class="service-eyebrow">Serveis de neteja · Vic i Osona</p><h2 id="service-ritme-title">Una neteja per a cada moment.</h2><p>Tria entre manteniment habitual i neteja a fons. En tots dos casos, comencem escoltant què necessita casa teva.</p></div><div class="photo-service-grid">
+          <article class="photo-service-card"><div class="photo-service-media"><img class="" src="assets/service-maintenance.webp" alt="Cuina lluminosa i cuidada" loading="lazy" decoding="async"><span class="photo-service-tag">Per al dia a dia</span></div><div class="photo-service-copy"><div class="care-card-heading"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 11 8-7 8 7v9H4Z"/><path d="M9 20v-7h6v7"/></svg></span><h3>Manteniment habitual</h3></div><p>La tranquil·litat de tenir casa teva cuidada, visita rere visita.</p><ul class="care-checks"><li>Neteja habitual dels espais acordats</li><li>Prioritats adaptades a casa teva</li><li>Atenció als materials en cada visita</li></ul><a class="action service-cta" href="#servei" data-service>Vull manteniment <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div></article>
 
-      <section class="service-variant service-catalog" id="service-respecte" role="tabpanel" aria-labelledby="service-respecte-title" tabindex="0" hidden>
-        <div class="service-shell">
-          <div class="services-top"><p class="service-eyebrow">Serveis · Pensats per viure-hi</p><span class="services-meta">La teva llar, al centre</span></div>
-          <div class="catalog-grid"><div class="catalog-intro"><h2 id="service-respecte-title">Una casa.<br>Moltes maneres<br>de <em>cuidar-la.</em></h2><p class="service-intro">Tria què necessita la teva llar. Nosaltres hi posem l’atenció, el criteri i la cura pels detalls.</p><a class="action service-cta" href="#servei" data-service>Troba el teu servei <span aria-hidden="true">↗</span></a><p class="catalog-note">Manteniment o neteja a fons.<br>Sempre, una manera de fer propera.</p></div>
-          <div class="catalog-options">
-            <details name="service-catalog" open><summary><span class="catalog-index">01</span><span>Manteniment habitual</span><span class="catalog-toggle" aria-hidden="true">+</span></summary><div class="catalog-detail"><img src="assets/service-maintenance.webp" alt="Cuina lluminosa amb les superfícies cuidades" loading="lazy"><p>Per a les llars que volen una cura continuada. Acordem els espais, les prioritats i la manera de treballar perquè la neteja encaixi amb tu.</p><span class="catalog-tag">La cura del dia a dia</span></div></details>
-            <details name="service-catalog"><summary><span class="catalog-index">02</span><span>Neteja a fons</span><span class="catalog-toggle" aria-hidden="true">+</span></summary><div class="catalog-detail"><img src="assets/service-deep.webp" alt="Bany amb les superfícies netes i cuidades" loading="lazy"><p>Una neteja més profunda per dedicar atenció als racons i detalls que ho necessiten. Ens expliques què vols prioritzar i acordem l’abast del servei.</p><span class="catalog-tag">Una atenció més profunda</span></div></details>
-            <details name="service-catalog"><summary><span class="catalog-index">03</span><span>Cura dels materials</span><span class="catalog-toggle" aria-hidden="true">+</span></summary><div class="catalog-detail"><img src="assets/hygiene-tools.webp" alt="Estris de neteja preparats" loading="lazy"><p>En tots dos serveis, parlem de les superfícies i acordem l’ús de l’aspirador, la mopa i l’equip de casa per evitar la contaminació creuada.</p><span class="catalog-tag">Un criteri compartit</span></div></details>
-          </div></div>
-        </div>
-      </section>
+          <article class="photo-service-card"><div class="photo-service-media"><img class="" src="assets/service-deep.webp" alt="Bany net amb les superfícies cuidades" loading="lazy" decoding="async"><span class="photo-service-tag">Quan cal anar més enllà</span></div><div class="photo-service-copy"><div class="care-card-heading"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></svg></span><h3>Neteja a fons</h3></div><p>Una atenció més profunda als espais i detalls que ho necessiten.</p><ul class="care-checks"><li>Neteja més profunda dels espais</li><li>Atenció als racons i als detalls</li><li>Abast acordat abans de començar</li></ul><a class="action service-cta" href="#servei" data-service>Vull una neteja a fons <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div></article>
+</div><div class="care-assurance"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></span><div><strong>La mateixa cura, triïs el servei que triïs.</strong><p>Acordem l’ús dels estris i tenim en compte els materials de casa teva.</p></div></div></div></section>
 
-      <section class="service-variant service-ledger" id="service-espais" role="tabpanel" aria-labelledby="service-espais-title" tabindex="0" hidden>
-        <div class="service-shell">
-          <div class="services-top"><p class="service-eyebrow">Serveis · Cinc Estrelles</p><span class="services-meta">La cura es nota en els detalls</span></div>
-          <div class="ledger-heading"><h2 id="service-espais-title">La neteja passa.<br>La cura <em>es queda.</em></h2><div><p class="service-intro">Dues formes d’ajudar-te a casa. Un mateix compromís: escoltar-te i tractar cada espai amb respecte.</p><a class="service-text-link" href="#servei" data-service>Parlem de la teva llar <span aria-hidden="true">↗</span></a></div></div>
-          <div class="ledger-rows">
-            <article><span class="ledger-number">01</span><h3>Mantenir</h3><p>Una neteja habitual que acompanya el ritme de casa teva. Acordem què importa i ho cuidem en cada visita.</p><span class="ledger-label">Cura continuada</span></article>
-            <article><span class="ledger-number">02</span><h3>Aprofundir</h3><p>Una neteja a fons per dedicar més atenció als espais i als detalls que ho necessiten.</p><span class="ledger-label">Atenció al detall</span></article>
-            <article><span class="ledger-number">03</span><h3>Respectar</h3><p>En cada servei, tenim en compte els materials i acordem com utilitzar l’equip de casa.</p><span class="ledger-label">Sempre present</span></article>
-          </div>
-          <div class="ledger-footer"><span aria-hidden="true">✳</span><p>Ens confies una casa.<br>Nosaltres hi veiem una llar.</p><span>Neteja de llars<br>Vic i Osona</span></div>
-        </div>
-      </section>
 
-      <section class="service-variant service-atlas" id="service-prop" role="tabpanel" aria-labelledby="service-prop-title" tabindex="0" hidden>
-        <div class="service-shell">
-          <div class="services-top"><p class="service-eyebrow">Serveis · Espai per viure</p><span class="services-meta">A casa teva / Vic i Osona</span></div>
-          <div class="atlas-grid"><div class="atlas-heading"><h2 id="service-prop-title">Tu hi poses<br>la vida.<br><em>Nosaltres, la cura.</em></h2><p class="service-intro">De la neteja habitual als detalls que demanen més temps. Cuidem els espais on passa el teu dia a dia.</p></div>
-          <figure class="atlas-large"><img src="assets/service-maintenance.webp" alt="Un espai de casa lluminós i acollidor" loading="lazy"><figcaption><span>01 / Viure la casa</span><span aria-hidden="true">↗</span></figcaption></figure>
-          <figure class="atlas-small"><img src="assets/service-deep.webp" alt="Detall d’un bany cuidat" loading="lazy"><figcaption>02 / Cuidar els detalls</figcaption></figure>
-          <div class="atlas-menu"><article><span>01</span><div><h3>Per al dia a dia</h3><p>Manteniment habitual, amb les prioritats de casa teva al centre.</p></div></article><article><span>02</span><div><h3>Per anar més a fons</h3><p>Una neteja més profunda dels espais i racons que ho necessiten.</p></div></article><a class="action service-cta" href="#servei" data-service>Què necessita casa teva? <span aria-hidden="true">↗</span></a></div>
-          </div>
-        </div>
-      </section>
+      <section class="service-variant services-welcome" id="service-respecte" role="tabpanel" aria-labelledby="service-respecte-title" tabindex="0" hidden><div class="service-shell"><div class="welcome-grid"><div class="welcome-photo"><img class="" src="assets/team-process.webp" alt="Neteja acurada d’una superfície de casa" loading="lazy" decoding="async"><div class="welcome-note"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg></span><div><strong>Casa teva, en bones mans.</strong><span>Escoltar. Acordar. Tenir-ne cura.</span></div></div></div><div class="welcome-copy"><div class="care-heading"><p class="service-eyebrow">Serveis de neteja · Vic i Osona</p><h2 id="service-respecte-title">Cuidem casa teva.<br>Tu gaudeix-la.</h2><p>T’ajudem amb la neteja perquè puguis dedicar temps al que importa. Amb un servei que encaixi amb la teva llar.</p></div><div class="welcome-services">
+          <article><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 11 8-7 8 7v9H4Z"/><path d="M9 20v-7h6v7"/></svg></span><div><h3>Manteniment habitual</h3><p>Una neteja regular dels espais que acordem amb tu. Per cuidar la llar en el dia a dia.</p></div></article>
+
+          <article><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></svg></span><div><h3>Neteja a fons</h3><p>Una neteja més profunda, amb atenció als racons i als detalls que vols prioritzar.</p></div></article>
+</div><a class="action service-cta" href="#servei" data-service>Parlem de la teva llar <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a><p class="welcome-foot">A Vic i Osona · Atenció als espais i als materials</p></div></div></div></section>
+
+
+      <section class="service-variant services-choice" id="service-espais" role="tabpanel" aria-labelledby="service-espais-title" tabindex="0" hidden><div class="service-shell"><div class="care-heading"><p class="service-eyebrow">Serveis de neteja · Vic i Osona</p><h2 id="service-espais-title">Què necessita casa teva?</h2><p>Coneix les dues maneres de cuidar la teva llar i escull per on començar.</p></div><div class="choice-box">
+          <fieldset class="care-choice"><legend class="sr-only">Tria el servei que vols conèixer</legend><label><input type="radio" name="care-service" value="maintenance" checked><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 11 8-7 8 7v9H4Z"/><path d="M9 20v-7h6v7"/></svg>Manteniment habitual</span></label><label><input type="radio" name="care-service" value="deep"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></svg>Neteja a fons</span></label></fieldset>
+<div class="choice-detail choice-maintenance"><div class="choice-photo"><img class="" src="assets/service-maintenance.webp" alt="Cuina amb llum natural" loading="lazy" decoding="async"></div><div class="choice-copy"><span class="care-kicker">MANTENIMENT HABITUAL</span><h3>La cura que acompanya<br>el teu dia a dia.</h3><p>Per mantenir els espais nets i cuidats amb una atenció habitual. Ens expliques les teves prioritats i acordem com tenir cura de casa teva.</p><ul class="care-checks"><li>Neteja habitual dels espais acordats</li><li>Prioritats adaptades a casa teva</li><li>Atenció als materials en cada visita</li></ul><a class="action service-cta" href="#servei" data-service>M’interessa el manteniment <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div></div><div class="choice-detail choice-deep"><div class="choice-photo"><img class="" src="assets/service-deep.webp" alt="Bany amb els detalls cuidats" loading="lazy" decoding="async"></div><div class="choice-copy"><span class="care-kicker">NETEJA A FONS</span><h3>Una atenció especial<br>a cada detall.</h3><p>Quan casa teva necessita una neteja més profunda. Dediquem atenció als espais i als racons que acordem abans de començar.</p><ul class="care-checks"><li>Neteja més profunda dels espais</li><li>Atenció als racons i als detalls</li><li>Abast acordat abans de començar</li></ul><a class="action service-cta" href="#servei" data-service>M’interessa la neteja a fons <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div></div></div><p class="choice-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg>En tots dos serveis, acordem els estris i la cura dels materials de casa.</p></div></section>
+
+
+      <section class="service-variant services-comfort" id="service-prop" role="tabpanel" aria-labelledby="service-prop-title" tabindex="0" hidden><div class="service-shell"><div class="care-heading"><p class="service-eyebrow">Serveis de neteja · Vic i Osona</p><h2 id="service-prop-title">La teva llar, cuidada com cal.</h2><p>Dos serveis clars. Una manera de fer propera, amb respecte pels espais i atenció als detalls.</p></div><div class="comfort-grid">
+          <article class="comfort-card"><div class="comfort-card-top"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 11 8-7 8 7v9H4Z"/><path d="M9 20v-7h6v7"/></svg></span><span class="care-kicker">CONTINUÏTAT</span></div><h3>Manteniment habitual</h3><p>Per a qui vol una casa cuidada en el dia a dia.</p><ul class="care-checks"><li>Neteja habitual dels espais acordats</li><li>Prioritats adaptades a casa teva</li><li>Atenció als materials en cada visita</li></ul><a class="action service-cta" href="#servei" data-service>Parlem del manteniment <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></article>
+
+          <article class="comfort-card"><div class="comfort-card-top"><span class="care-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z"/></svg></span><span class="care-kicker">PROFUNDITAT</span></div><h3>Neteja a fons</h3><p>Per a quan els espais demanen una atenció extra.</p><ul class="care-checks"><li>Neteja més profunda dels espais</li><li>Atenció als racons i als detalls</li><li>Abast acordat abans de començar</li></ul><a class="action service-cta" href="#servei" data-service>Parlem de la neteja a fons <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></article>
+</div><div class="comfort-bottom"><div><strong>No tens clar quin servei necessites?</strong><p>Ens expliques casa teva i t’ajudem a decidir.</p></div><a class="action service-secondary" href="#servei" data-service>Ho parlem? <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 13 13 3M3 3h10v10" stroke="currentColor" stroke-width="1.4"/></svg></a></div></div></section>
+
     </div>
 
     <section class="about" id="sobre-nosaltres" aria-labelledby="about-title">
@@ -528,10 +515,10 @@
     <span class="review-label">Serveis</span>
     <nav class="variant-links" role="tablist" aria-label="Tria un disseny de serveis">
       <a href="#service-cura" id="tab-service-cura" role="tab" aria-controls="service-cura" aria-label="Disseny 1: Una cura a mida" aria-selected="true" tabindex="0"><span>01</span><b class="variant-name">A mida</b></a>
-      <a href="#service-ritme" id="tab-service-ritme" role="tab" aria-controls="service-ritme" aria-label="Disseny 2: Dues maneres" aria-selected="false" tabindex="-1"><span>02</span><b class="variant-name">Dues</b></a>
-      <a href="#service-respecte" id="tab-service-respecte" role="tab" aria-controls="service-respecte" aria-label="Disseny 3: Catàleg" aria-selected="false" tabindex="-1"><span>03</span><b class="variant-name">Catàleg</b></a>
-      <a href="#service-espais" id="tab-service-espais" role="tab" aria-controls="service-espais" aria-label="Disseny 4: La cura es queda" aria-selected="false" tabindex="-1"><span>04</span><b class="variant-name">La cura</b></a>
-      <a href="#service-prop" id="tab-service-prop" role="tab" aria-controls="service-prop" aria-label="Disseny 5: Espai per viure" aria-selected="false" tabindex="-1"><span>05</span><b class="variant-name">Viure-hi</b></a>
+      <a href="#service-ritme" id="tab-service-ritme" role="tab" aria-controls="service-ritme" aria-label="Disseny 2: Targetes" aria-selected="false" tabindex="-1"><span>02</span><b class="variant-name">Targetes</b></a>
+      <a href="#service-respecte" id="tab-service-respecte" role="tab" aria-controls="service-respecte" aria-label="Disseny 3: Proximitat" aria-selected="false" tabindex="-1"><span>03</span><b class="variant-name">Propera</b></a>
+      <a href="#service-espais" id="tab-service-espais" role="tab" aria-controls="service-espais" aria-label="Disseny 4: Selector de serveis" aria-selected="false" tabindex="-1"><span>04</span><b class="variant-name">Selector</b></a>
+      <a href="#service-prop" id="tab-service-prop" role="tab" aria-controls="service-prop" aria-label="Disseny 5: Confiança" aria-selected="false" tabindex="-1"><span>05</span><b class="variant-name">Confiança</b></a>
     </nav>
   </aside>
 
